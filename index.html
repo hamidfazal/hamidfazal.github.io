@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Hamid Fazal | Holistic Physician & Integrated Care Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-medical: #1e3a5f;
+            --primary-warm: #2d5a4a;
+            --accent-gold: #d4af37;
+            --bg-cream: #faf9f6;
+            --text-dark: #1a1a1a;
+            --gradient-main: linear-gradient(135deg, #1e3a5f 0%, #2d5a4a 50%, #4a7c59 100%);
+            --gradient-soft: linear-gradient(135deg, #f5f7fa 0%, #e8f4f8 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-cream); color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+        
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 20px rgba(0,0,0,0.05); }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary-medical); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.9rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--gradient-main); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--gradient-soft); padding: 6rem 5% 4rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(30,58,95,0.08) 0%, transparent 70%); border-radius: 50%; animation: pulse 8s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 0.8; } }
+        
+        .hero-content { max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-text .subtitle { font-size: 1.3rem; color: var(--primary-warm); margin-bottom: 1.5rem; font-weight: 500; }
+        .hero-text .tagline { font-size: 1.1rem; color: #666; margin-bottom: 2rem; font-style: italic; border-left: 3px solid var(--accent-gold); padding-left: 1.5rem; }
+        .hero-stats { display: flex; gap: 2rem; margin-top: 2rem; }
+        .stat-item { text-align: center; }
+        .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--primary-medical); }
+        .stat-label { font-size: 0.85rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .hero-image { position: relative; display: flex; justify-content: center; }
+        .profile-container { position: relative; width: 350px; height: 350px; }
+        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 5px solid white; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+        .profile-ring { position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; border: 2px solid var(--accent-gold); border-radius: 50%; animation: rotate 20s linear infinite; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
+        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary-medical); margin-bottom: 1rem; position: relative; display: inline-block; }
+        .section-header h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--accent-gold); }
+        
+        .philosophy { background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05); margin: 2rem 0; position: relative; overflow: hidden; }
+        .philosophy::before { content: '"'; position: absolute; top: -20px; left: 20px; font-family: 'Cormorant Garamond', serif; font-size: 10rem; color: rgba(30,58,95,0.05); line-height: 1; }
+        .philosophy-content { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; line-height: 1.8; font-style: italic; position: relative; z-index: 1; }
+        .philosophy-author { margin-top: 1.5rem; font-weight: 600; color: var(--primary-medical); }
+        
+        .specialties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .specialty-card { background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.4s ease; }
+        .specialty-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .specialty-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .specialty-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary-medical); }
+        .specialty-card ul { list-style: none; }
+        .specialty-card li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem; color: #555; }
+        .specialty-card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-gold); font-weight: bold; }
+        
+        .timeline { position: relative; padding: 2rem 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; background: linear-gradient(to bottom, var(--primary-medical), var(--primary-warm)); }
+        .timeline-item { display: flex; justify-content: flex-end; padding-right: 50%; position: relative; margin: 2rem 0; }
+        .timeline-item:nth-child(even) { justify-content: flex-start; padding-right: 0; padding-left: 50%; }
+        .timeline-content { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); max-width: 400px; margin: 0 2rem; border-left: 4px solid var(--primary-medical); }
+        .timeline-item:nth-child(even) .timeline-content { border-left: none; border-right: 4px solid var(--primary-warm); }
+        .timeline-date { position: absolute; top: 50%; transform: translateY(-50%); background: var(--gradient-main); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+        .timeline-item:nth-child(odd) .timeline-date { right: calc(50% + 20px); }
+        .timeline-item:nth-child(even) .timeline-date { left: calc(50% + 20px); }
+        .timeline-dot { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: white; border: 4px solid var(--accent-gold); border-radius: 50%; z-index: 10; }
+        .timeline-content h4 { font-size: 1.2rem; color: var(--primary-medical); margin-bottom: 0.5rem; }
+        .timeline-content .institution { color: var(--primary-warm); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        
+        .photo-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+        .photo-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .photo-card img { width: 100%; height: 300px; object-fit: cover; }
+        .photo-caption { padding: 1rem; text-align: center; font-size: 0.9rem; color: #666; font-style: italic; }
+        
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .skill-category { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.05); }
+        .skill-category h4 { color: var(--primary-medical); margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem; }
+        .skill-category ul { list-style: none; }
+        .skill-category li { padding: 0.3rem 0; font-size: 0.9rem; color: #555; padding-left: 1rem; position: relative; }
+        .skill-category li::before { content: '•'; color: var(--accent-gold); position: absolute; left: 0; font-weight: bold; }
+        
+        .credentials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .credential-item { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.05); display: flex; align-items: start; gap: 1rem; }
+        .credential-icon { font-size: 1.5rem; }
+        .credential-text h4 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--primary-medical); }
+        .credential-text p { font-size: 0.85rem; color: #666; }
+        
+        .contact { background: var(--gradient-main); color: white; border-radius: 20px; padding: 4rem; text-align: center; margin-top: 4rem; position: relative; overflow: hidden; }
+        .contact h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; }
+        .contact-grid { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+        .contact-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+        .contact-icon { font-size: 2rem; background: rgba(255,255,255,0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .contact-item a { color: white; text-decoration: none; font-weight: 600; }
+        
+        footer { text-align: center; padding: 2rem; color: #666; font-size: 0.9rem; border-top: 1px solid #eee; margin-top: 4rem; }
+        .certificates-banner { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .cert-badge { background: rgba(30,58,95,0.1); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--primary-medical); }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .profile-container { width: 250px; height: 250px; }
+            .photo-gallery { grid-template-columns: 1fr; }
+            .timeline::before { left: 30px; }
+            .timeline-item, .timeline-item:nth-child(even) { justify-content: flex-start; padding-left: 80px; padding-right: 0; }
+            .timeline-date { left: 0 !important; right: auto !important; top: -40px; }
+            .timeline-dot { left: 30px; }
+            .timeline-content { margin: 0; border-right: none !important; border-left: 4px solid var(--primary-medical) !important; }
+            .contact { padding: 2rem; }
+            .hero-stats { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="nav-logo">Dr. Hamid Fazal</a>
+        <ul class="nav-links">
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#specialties">Specialties</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#credentials">Credentials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Dr. Hamid Fazal</h1>
+                <p class="subtitle">Holistic Physician & Integrated Care Specialist</p>
+                <p class="tagline">Bridging the gap between metabolic medicine and mental health for over 25 years. Committed to ethical care, therapeutic communication, and community empowerment.</p>
+                <div class="hero-stats">
+                    <div class="stat-item"><span class="stat-number">25+</span><span class="stat-label">Years Experience</span></div>
+                    <div class="stat-item"><span class="stat-number">2</span><span class="stat-label">Specialties</span></div>
+                    <div class="stat-item"><span class="stat-number">USA</span><span class="stat-label">ECFMG Certified</span></div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-container">
+                    <div class="profile-ring"></div>
+                    <img src="PHOTO_PLACEHOLDER_1" alt="Dr. Hamid Fazal" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy">
+        <div class="section-header">
+            <h2>Clinical Philosophy</h2>
+            <p>The foundation of my practice</p>
+        </div>
+        <div class="philosophy">
+            <div class="philosophy-content">
+                Effective healthcare requires treating the body and the mind as a single unit. My objective is to apply global medical standards—validated by my MD certification and US research background—to local community health challenges. I specialize in the integration of metabolic medicine and psychiatric care, providing evidence-based, compassionate care to populations where comorbid physical and mental illnesses intersect.
+            </div>
+            <div class="philosophy-author">— Dr. Hamid Fazal, MD (ECFMG Certified)</div>
+        </div>
+    </section>
+
+    <section id="specialties">
+        <div class="section-header">
+            <h2>Areas of Specialized Impact</h2>
+            <p>Dual-spectrum expertise for whole-patient care</p>
+        </div>
+        <div class="specialties-grid">
+            <div class="specialty-card">
+                <div class="specialty-icon">🩺</div>
+                <h3>Integrated Chronic Disease Management</h3>
+                <ul>
+                    <li>Diabetes & Diabetic Nephropathy</li>
+                    <li>Hypertension & Hypertensive Crises</li>
+                    <li>Chronic Kidney Disease (CKD) & Dialysis</li>
+                    <li>Metabolic Syndrome Management</li>
+                    <li>Cardiovascular Risk Reduction</li>
+                    <li>Geriatric Medicine</li>
+                </ul>
+            </div>
+            <div class="specialty-card">
+                <div class="specialty-icon">🧠</div>
+                <h3>Community Psychiatry & Outreach</h3>
+                <ul>
+                    <li>Mobile Clinic Leadership</li>
+                    <li>Acute Psychiatric Stabilization</li>
+                    <li>Substance Use Disorders</li>
+                    <li>Depression & Anxiety Disorders</li>
+                    <li>Psychosis Management</li>
+                    <li>Rehabilitation Psychiatry</li>
+                </ul>
+            </div>
+            <div class="specialty-card">
+                <div class="specialty-icon">🥗</div>
+                <h3>Clinical Nutrition & Research</h3>
+                <ul>
+                    <li>Therapeutic Diet Design</li>
+                    <li>Psychiatric Medication Metabolic Effects</li>
+                    <li>Renal Nutrition Protocols</li>
+                    <li>Diabetic Dietary Management</li>
+                    <li>Alzheimer's & Dementia Research</li>
+                    <li>Clinical Trials & Data Analysis</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-header">
+            <h2>Professional Journey</h2>
+            <p>From international research to community impact</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2025 – Present</div>
+                <div class="timeline-content">
+                    <h4>Field RMO – Psychiatric Outreach</h4>
+                    <div class="institution">Karwan-e-Hayat / KCPC, Karachi</div>
+                    <p>Leading mobile psychiatric units for underserved populations at Creek General Hospital Korangi. Coordinating tri-weekly camps with multidisciplinary teams.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2021 – 2025</div>
+                <div class="timeline-content">
+                    <h4>Senior Medical Officer – Chronic Disease & Dialysis</h4>
+                    <div class="institution">SSAWB Trust, Karachi</div>
+                    <p>Led OPD services for diabetes, hypertension, and CKD. Supervised dialysis unit operations and junior medical staff.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2021 – 2023</div>
+                <div class="timeline-content">
+                    <h4>RMO – Psychiatry & Behavioral Sciences</h4>
+                    <div class="institution">G.A. Asghar Institute, Karachi</div>
+                    <p>Managed psychiatric patients and formulated individualized treatment plans.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2017 – Present</div>
+                <div class="timeline-content">
+                    <h4>Part-Time Medical Officer – Rehabilitation</h4>
+                    <div class="institution">Al Zahara Rehabilitation Center, Karachi</div>
+                    <p>Provide psychiatric and general medical support to vulnerable populations. Holistic management of substance use disorders.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2014 – 2019</div>
+                <div class="timeline-content">
+                    <h4>RMO – Institute of Behavioral Sciences</h4>
+                    <div class="institution">Dr. A.Q. Khan Center, DUHS</div>
+                    <p>Delivered comprehensive psychiatric services and contributed to behavioral health research.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2012</div>
+                <div class="timeline-content">
+                    <h4>Casualty Medical Officer</h4>
+                    <div class="institution">Civil Hospital Karachi</div>
+                    <p>Managed high-volume emergency and trauma cases in a tertiary care hospital.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2005 – 2006</div>
+                <div class="timeline-content">
+                    <h4>Clinical Research Fellow – Aging & Dementia</h4>
+                    <div class="institution">NYU Medical Center, USA</div>
+                    <p>Conducted Alzheimer's research under Dr. Barry Reisberg. Published in peer-reviewed US medical journals.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2002 – 2006</div>
+                <div class="timeline-content">
+                    <h4>Clinical Research Fellow – Cardiovascular</h4>
+                    <div class="institution">NYU Medical Center & WVU, USA</div>
+                    <p>FDA-approved cardiovascular drug trials. Published in American Journal of Cardiology.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">1997</div>
+                <div class="timeline-content">
+                    <h4>Medical Foundation</h4>
+                    <div class="institution">Jinnah Sindh Medical University, Karachi</div>
+                    <p>MBBS graduation. PMDC registered since 1997.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="section-header">
+            <h2>In Action</h2>
+            <p>Clinical excellence and community service</p>
+        </div>
+        <div class="photo-gallery">
+            <div class="photo-card">
+                <img src="PHOTO_PLACEHOLDER_1" alt="Dr. Hamid Fazal - Professional">
+                <div class="photo-caption">Professional Care - Dedicated to Patient Wellbeing</div>
+            </div>
+            <div class="photo-card">
+                <img src="PHOTO_PLACEHOLDER_2" alt="Dr. Hamid Fazal - Community Work">
+                <div class="photo-caption">Community Outreach - Fostering Mental Wellbeing at Medical Camps</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header">
+            <h2>Core Competencies</h2>
+            <p>Clinical, research, and community expertise</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Clinical</h4>
+                <ul>
+                    <li>Psychiatry & Behavioral Medicine</li>
+                    <li>Internal Medicine & Geriatrics</li>
+                    <li>Chronic Disease Management</li>
+                    <li>Emergency & Critical Care</li>
+                    <li>Dialysis & Nephrology</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Community</h4>
+                <ul>
+                    <li>Outreach Program Leadership</li>
+                    <li>Patient Education</li>
+                    <li>Therapeutic Communication</li>
+                    <li>Multidisciplinary Collaboration</li>
+                    <li>Mobile Clinic Operations</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Research</h4>
+                <ul>
+                    <li>Clinical Trials (FDA-approved)</li>
+                    <li>Data Analysis</li>
+                    <li>Scientific Writing</li>
+                    <li>Alzheimer's & Dementia Studies</li>
+                    <li>Cardiovascular Research</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Technical</h4>
+                <ul>
+                    <li>Ultrasound</li>
+                    <li>ACLS Certified</li>
+                    <li>ICU Monitoring</li>
+                    <li>Dialysis Supervision</li>
+                    <li>Clinical Nutrition</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="credentials">
+        <div class="section-header">
+            <h2>Global Credentials</h2>
+            <p>International standards, local impact</p>
+        </div>
+        <div class="credentials-grid">
+            <div class="credential-item">
+                <div class="credential-icon">🇺🇸</div>
+                <div class="credential-text">
+                    <h4>ECFMG Certification</h4>
+                    <p>USA – 2003, Valid Indefinitely</p>
+                </div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-icon">🎓</div>
+                <div class="credential-text">
+                    <h4>USMLE Step 3</h4>
+                    <p>USA – 2006</p>
+                </div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-icon">📋</div>
+                <div class="credential-text">
+                    <h4>USMLE Step 2 CK & CS</h4>
+                    <p>USA – 2001-2002</p>
+                </div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-icon">📄</div>
+                <div class="credential-text">
+                    <h4>USMLE Step 1</h4>
+                    <p>USA – 2000</p>
+                </div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-icon">📜</div>
+                <div class="credential-text">
+                    <h4>FCPS Part I (Medicine & Allied)</h4>
+                    <p>College of Physicians & Surgeons Pakistan – 2002</p>
+                </div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-icon">🍎</div>
+                <div class="credential-text">
+                    <h4>PG Dip in Nutrition</h4>
+                    <p>Allama Iqbal Open University – 2018</p>
+                </div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-icon">🫀</div>
+                <div class="credential-text">
+                    <h4>ACLS Certification</h4>
+                    <p>West Virginia University, USA</p>
+                </div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-icon">📱</div>
+                <div class="credential-text">
+                    <h4>Basic Ultrasound Training</h4>
+                    <p>2002</p>
+                </div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-icon">🔧</div>
+                <div class="credential-text">
+                    <h4>Diploma in RTV & Electronics</h4>
+                    <p>Govt College of Technology SITE, Karachi – 1997</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact">
+            <h2>Contact & Collaboration</h2>
+            <p>Available for senior clinical roles, healthcare consultancy, and integrated health project leadership.</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <span>Phone</span>
+                    <a href="tel:+923486916688">0348-6916688</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <span>Email</span>
+                    <a href="mailto:1hamidfazal@gmail.com">1hamidfazal@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <span>Location</span>
+                    <span>3/520 Liaquat Abad, Karachi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="certificates-banner">
+            <span class="cert-badge">MD ECFMG Certified</span>
+            <span class="cert-badge">PMDC Registered 1997</span>
+            <span class="cert-badge">US Trained Researcher</span>
+            <span class="cert-badge">ACLS Certified</span>
+        </div>
+        <p>&copy; 2025 Dr. Hamid Fazal. All rights reserved.</p>
+    </footer>
+</body>
+</html>'''
+
+print("=" * 80)
+print("COMPLETE UPDATED PORTFOLIO CODE - READY TO COPY")
+print("=" * 80)
+print("\n📋 INSTRUCTIONS:")
+print("1. Tap and hold on the code below")
+print("2. Select 'Select All' then 'Copy'")
+print("3. Paste into your email app")
+print("4. Send to yourself")
+print("5. On laptop: paste into Notepad/TextEdit, save as 'portfolio.html'")
+print("\n" + "=" * 80)
+print("\n" + html_final)
+print("\n" + "=" * 80)
+print("END OF CODE")
+print("=" * 80)
