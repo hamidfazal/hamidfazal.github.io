@@ -78,9 +78,27 @@
         .timeline-content h4 { font-size: 1.2rem; color: var(--primary-medical); margin-bottom: 0.5rem; }
         .timeline-content .institution { color: var(--primary-warm); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
         
+        /* FIXED GALLERY STYLES - No more cropping */
         .photo-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
-        .photo-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
-        .photo-card img { width: 100%; height: 300px; object-fit: cover; }
+        .photo-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.4s ease; }
+        .photo-card:hover { transform: translateY(-5px); }
+        
+        /* Changed from fixed height to auto with contain */
+        .photo-card .img-container { 
+            width: 100%; 
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .photo-card img { 
+            width: 100%; 
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+        }
         .photo-caption { padding: 1rem; text-align: center; font-size: 0.9rem; color: #666; font-style: italic; }
         
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
@@ -151,7 +169,7 @@
             <div class="hero-image">
                 <div class="profile-container">
                     <div class="profile-ring"></div>
-                    <img src="PHOTO_PLACEHOLDER_1" alt="Dr. Hamid Fazal" class="profile-img">
+                    <img src="https://i.ibb.co/Y45NfqWY/IMG-20230818-WA0026.jpg" alt="Dr. Hamid Fazal" class="profile-img">
                 </div>
             </div>
         </div>
@@ -312,11 +330,15 @@
         </div>
         <div class="photo-gallery">
             <div class="photo-card">
-                <img src="PHOTO_PLACEHOLDER_1" alt="Dr. Hamid Fazal - Professional">
+                <div class="img-container">
+                    <img src="https://i.ibb.co/Y45NfqWY/IMG-20230818-WA0026.jpg" alt="Dr. Hamid Fazal - Professional">
+                </div>
                 <div class="photo-caption">Professional Care - Dedicated to Patient Wellbeing</div>
             </div>
             <div class="photo-card">
-                <img src="PHOTO_PLACEHOLDER_2" alt="Dr. Hamid Fazal - Community Work">
+                <div class="img-container">
+                    <img src="https://i.ibb.co/tw8XQ1bx/IMG-20231228-194224.jpg" alt="Dr. Hamid Fazal - Community Work">
+                </div>
                 <div class="photo-caption">Community Outreach - Fostering Mental Wellbeing at Medical Camps</div>
             </div>
         </div>
@@ -480,16 +502,17 @@
 </html>'''
 
 print("=" * 80)
-print("COMPLETE UPDATED PORTFOLIO CODE - READY TO COPY")
+print("FIXED GALLERY - IMAGES WON'T BE CROPPED")
 print("=" * 80)
-print("\n📋 INSTRUCTIONS:")
-print("1. Tap and hold on the code below")
-print("2. Select 'Select All' then 'Copy'")
-print("3. Paste into your email app")
-print("4. Send to yourself")
-print("5. On laptop: paste into Notepad/TextEdit, save as 'portfolio.html'")
+print("\n✅ Changes made:")
+print(" • Gallery images now use 'object-fit: contain' (not 'cover')")
+print(" • Images maintain their original aspect ratio")
+print(" • Full image visible including faces")
+print(" • Added container wrapper for better alignment")
+print(" • Max height set to 400px to prevent oversized images")
+print("\n📋 Upload this code to GitHub to fix the gallery!")
 print("\n" + "=" * 80)
-print("\n" + html_final)
+print(html_fixed_gallery)
 print("\n" + "=" * 80)
-print("END OF CODE")
+print("END OF FIXED CODE")
 print("=" * 80)
