@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /lectures/
+---
+
 # 📚 Medical Lectures & Clinical Resources
 > A centralized directory of evidence-based lecture notes, clinical guides, and tools.
 
