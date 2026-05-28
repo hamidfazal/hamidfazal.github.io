@@ -3,143 +3,1036 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Hamid Fazal | Integrated Care & Medical Education Specialist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Dr. Hamid Fazal, MD | Integrated Care & Medical Education Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-medical: #1e3a5f;
-            --primary-warm: #2d5a4a;
-            --accent-gold: #d4af37;
-            --bg-cream: #faf9f6;
+            --primary-navy: #0f2744;
+            --primary-teal: #1a5f5a;
+            --accent-gold: #c9a84c;
+            --accent-gold-light: #e8d5a3;
+            --bg-cream: #faf8f5;
+            --bg-warm: #f5f1ec;
             --text-dark: #1a1a1a;
-            --gradient-main: linear-gradient(135deg, #1e3a5f 0%, #2d5a4a 50%, #4a7c59 100%);
-            --gradient-soft: linear-gradient(135deg, #f5f7fa 0%, #e8f4f8 100%);
+            --text-muted: #5a5a5a;
+            --text-light: #888;
+            --white: #ffffff;
+            --border-light: rgba(0,0,0,0.06);
+            --shadow-soft: 0 4px 24px rgba(15,39,68,0.06);
+            --shadow-medium: 0 8px 40px rgba(15,39,68,0.1);
+            --shadow-glow: 0 0 60px rgba(201,168,76,0.15);
+            --gradient-hero: linear-gradient(160deg, #faf8f5 0%, #eef3f7 40%, #e8f0f5 100%);
+            --gradient-dark: linear-gradient(135deg, #0f2744 0%, #1a3a52 50%, #1a5f5a 100%);
+            --gradient-gold: linear-gradient(135deg, #c9a84c 0%, #e8d5a3 50%, #c9a84c 100%);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-cream); color: var(--text-dark); line-height: 1.6; }
-        
-        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
-        
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 20px rgba(0,0,0,0.05); }
-        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary-medical); text-decoration: none; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.9rem; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--gradient-main); transition: width 0.3s; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-cream); 
+            color: var(--text-dark); 
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; letter-spacing: -0.02em; }
+        h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 600; }
+
+        /* ===== NAVIGATION ===== */
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: rgba(250,248,245,0.92); 
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            z-index: 1000; 
+            padding: 0 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            height: 72px;
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255,255,255,0.97);
+            box-shadow: var(--shadow-soft);
+            height: 64px;
+        }
+
+        .nav-logo { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.35rem; 
+            font-weight: 700; 
+            color: var(--primary-navy); 
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo::before {
+            content: '◆';
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+
+        .nav-links { 
+            display: flex; 
+            gap: 2.5rem; 
+            list-style: none; 
+            align-items: center; 
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-dark); 
+            font-weight: 500; 
+            font-size: 0.88rem; 
+            position: relative;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -6px; 
+            left: 0; 
+            width: 0; 
+            height: 2px; 
+            background: var(--gradient-gold); 
+            transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover { color: var(--primary-navy); }
         .nav-links a:hover::after { width: 100%; }
-        .nav-btn { background: var(--primary-medical); color: white !important; padding: 0.5rem 1rem; border-radius: 20px; transition: all 0.3s ease; }
-        .nav-btn:hover { background: var(--primary-warm); transform: translateY(-2px); }
+
+        .nav-btn { 
+            background: var(--gradient-dark); 
+            color: white !important; 
+            padding: 0.6rem 1.4rem; 
+            border-radius: 30px; 
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(15,39,68,0.2);
+            font-weight: 600 !important;
+        }
+
+        .nav-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(15,39,68,0.3);
+        }
         .nav-btn::after { display: none !important; }
-        
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--gradient-soft); padding: 7rem 5% 4rem; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(30,58,95,0.08) 0%, transparent 70%); border-radius: 50%; animation: pulse 8s ease-in-out infinite; }
-        @keyframes pulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 0.8; } }
-        
-        .hero-content { max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
-        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-text .subtitle { font-size: 1.3rem; color: var(--primary-warm); margin-bottom: 1.5rem; font-weight: 500; }
-        .hero-text .tagline { font-size: 1.05rem; color: #444; margin-bottom: 2rem; border-left: 3px solid var(--accent-gold); padding-left: 1.5rem; text-align: justify; }
-        
-        .hero-cta-box { background: white; border-left: 5px solid #0066cc; padding: 15px; margin: 25px 0; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .hero-cta-box h3 { margin: 0 0 5px 0; color: #111; font-family: 'Inter', sans-serif; font-size: 1.1rem; }
-        .hero-cta-box p { margin: 0; font-size: 0.95rem; color: #333; }
-        .hero-cta-box a { color: #0066cc; font-weight: bold; text-decoration: underline; }
-        
-        .hero-stats { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
-        .stat-item { text-align: center; background: white; padding: 0.75rem 1.2rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border-bottom: 3px solid var(--accent-gold); }
-        .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary-medical); display: block; }
-        .stat-label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
-        
-        .hero-image { position: relative; display: flex; justify-content: center; }
-        .profile-container { position: relative; width: 330px; height: 330px; }
-        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 5px solid white; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
-        .profile-ring { position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; border: 2px solid var(--accent-gold); border-radius: 50%; animation: rotate 20s linear infinite; }
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        
-        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.5rem; color: var(--primary-medical); margin-bottom: 1rem; position: relative; display: inline-block; }
-        .section-header h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--accent-gold); }
-        
-        .philosophy { background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05); margin: 2rem 0; position: relative; overflow: hidden; }
-        .philosophy::before { content: '"'; position: absolute; top: -20px; left: 20px; font-family: 'Cormorant Garamond', serif; font-size: 10rem; color: rgba(30,58,95,0.05); line-height: 1; }
-        .philosophy-content { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; line-height: 1.8; font-style: italic; position: relative; z-index: 1; text-align: justify; }
-        .philosophy-author { margin-top: 1.5rem; font-weight: 600; color: var(--primary-medical); }
-        
-        .specialties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .specialty-card { background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.4s ease; }
-        .specialty-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-        .specialty-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .specialty-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary-medical); }
-        .specialty-card ul { list-style: none; }
-        .specialty-card li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem; color: #555; }
-        .specialty-card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-gold); font-weight: bold; }
-        
-        .timeline { position: relative; padding: 2rem 0; }
-        .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; background: linear-gradient(to bottom, var(--primary-medical), var(--primary-warm)); }
-        .timeline-item { display: flex; justify-content: flex-end; padding-right: 50%; position: relative; margin: 2rem 0; }
-        .timeline-item:nth-child(even) { justify-content: flex-start; padding-right: 0; padding-left: 50%; }
-        .timeline-content { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); max-width: 450px; margin: 0 2rem; border-left: 4px solid var(--primary-medical); }
-        .timeline-item:nth-child(even) .timeline-content { border-left: none; border-right: 4px solid var(--primary-warm); }
-        .timeline-date { position: absolute; top: 50%; transform: translateY(-50%); background: var(--gradient-main); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
-        .timeline-item:nth-child(odd) .timeline-date { right: calc(50% + 20px); }
-        .timeline-item:nth-child(even) .timeline-date { left: calc(50% + 20px); }
-        .timeline-dot { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: white; border: 4px solid var(--accent-gold); border-radius: 50%; z-index: 10; }
-        .timeline-content h4 { font-size: 1.2rem; color: var(--primary-medical); margin-bottom: 0.5rem; }
-        .timeline-content .institution { color: var(--primary-warm); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
-        
-        .photo-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
-        .photo-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.4s ease; }
-        .photo-card:hover { transform: translateY(-5px); }
-        .photo-card .img-container { width: 100%; background: #f5f5f5; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .photo-card img { width: 100%; height: auto; max-height: 400px; object-fit: contain; display: block; }
-        .photo-caption { padding: 1rem; text-align: center; font-size: 0.9rem; color: #666; font-style: italic; }
-        
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .skill-category { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.05); }
-        .skill-category h4 { color: var(--primary-medical); margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem; }
-        .skill-category ul { list-style: none; }
-        .skill-category li { padding: 0.3rem 0; font-size: 0.9rem; color: #555; padding-left: 1rem; position: relative; }
-        .skill-category li::before { content: '•'; color: var(--accent-gold); position: absolute; left: 0; font-weight: bold; }
-        
-        .credentials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .credential-item { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.05); display: flex; align-items: start; gap: 1rem; }
-        .credential-icon { font-size: 1.5rem; }
-        .credential-text h4 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--primary-medical); }
-        .credential-text p { font-size: 0.85rem; color: #666; }
-        
-        .contact { background: var(--gradient-main); color: white; border-radius: 20px; padding: 4rem; text-align: center; margin-top: 4rem; position: relative; overflow: hidden; }
-        .contact h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; }
-        .contact-grid { display: flex; justify-content: center; gap: 4rem; margin-top: 2rem; flex-wrap: wrap; }
-        .contact-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; max-width: 320px; }
-        .contact-icon { font-size: 2rem; background: rgba(255,255,255,0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .contact-item a { color: white; text-decoration: none; font-weight: 600; word-break: break-all; }
-        .contact-item span.address-text { line-height: 1.4; font-size: 0.95rem; }
-        
-        footer { text-align: center; padding: 2rem; color: #666; font-size: 0.9rem; border-top: 1px solid #eee; margin-top: 4rem; }
-        .certificates-banner { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
-        .cert-badge { background: rgba(30,58,95,0.1); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--primary-medical); }
-        
+
+        /* ===== HERO ===== */
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: var(--gradient-hero); 
+            padding: 8rem 5% 5rem; 
+            position: relative; 
+            overflow: hidden; 
+        }
+
+        .hero::before { 
+            content: ''; 
+            position: absolute; 
+            top: -30%; 
+            right: -15%; 
+            width: 700px; 
+            height: 700px; 
+            background: radial-gradient(circle, rgba(15,39,68,0.06) 0%, transparent 70%); 
+            border-radius: 50%; 
+            animation: breathe 10s ease-in-out infinite; 
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(26,95,90,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: breathe 12s ease-in-out infinite reverse;
+        }
+
+        @keyframes breathe { 
+            0%,100% { transform: scale(1); opacity: 0.5; } 
+            50% { transform: scale(1.15); opacity: 0.9; } 
+        }
+
+        .hero-content { 
+            max-width: 1280px; 
+            width: 100%; 
+            display: grid; 
+            grid-template-columns: 1.3fr 0.7fr; 
+            gap: 5rem; 
+            align-items: center; 
+            position: relative; 
+            z-index: 1; 
+        }
+
+        .hero-text h1 { 
+            font-size: 3.8rem; 
+            line-height: 1.05; 
+            margin-bottom: 0.8rem; 
+            color: var(--primary-navy);
+            font-weight: 700;
+        }
+
+        .hero-text h1 .title-accent {
+            display: block;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text .subtitle { 
+            font-size: 1.25rem; 
+            color: var(--primary-teal); 
+            margin-bottom: 1.5rem; 
+            font-weight: 500;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        .hero-text .tagline { 
+            font-size: 1.05rem; 
+            color: var(--text-muted); 
+            margin-bottom: 2rem; 
+            border-left: 3px solid var(--accent-gold); 
+            padding-left: 1.5rem; 
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .hero-cta-box { 
+            background: white; 
+            border-left: 4px solid var(--primary-navy); 
+            padding: 1.25rem 1.5rem; 
+            margin: 1.5rem 0; 
+            border-radius: 0 12px 12px 0; 
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-cta-box:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .hero-cta-box h3 { 
+            margin: 0 0 6px 0; 
+            color: var(--primary-navy); 
+            font-family: 'Inter', sans-serif; 
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-cta-box p { 
+            margin: 0; 
+            font-size: 0.92rem; 
+            color: var(--text-muted); 
+            line-height: 1.6;
+        }
+
+        .hero-cta-box a { 
+            color: var(--primary-teal); 
+            font-weight: 600; 
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .hero-cta-box a:hover { border-bottom-color: var(--primary-teal); }
+
+        .hero-stats { 
+            display: flex; 
+            gap: 1rem; 
+            margin-top: 2.5rem; 
+            flex-wrap: wrap; 
+        }
+
+        .stat-item { 
+            text-align: center; 
+            background: white; 
+            padding: 1rem 1.4rem; 
+            border-radius: 14px; 
+            box-shadow: var(--shadow-soft);
+            border-bottom: 3px solid var(--accent-gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-width: 130px;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .stat-number { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.6rem; 
+            font-weight: 700; 
+            color: var(--primary-navy); 
+            display: block;
+            line-height: 1.2;
+        }
+
+        .stat-label { 
+            font-size: 0.7rem; 
+            color: var(--text-light); 
+            text-transform: uppercase; 
+            letter-spacing: 1.2px; 
+            font-weight: 600;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .hero-image { 
+            position: relative; 
+            display: flex; 
+            justify-content: center; 
+        }
+
+        .profile-container { 
+            position: relative; 
+            width: 340px; 
+            height: 340px; 
+        }
+
+        .profile-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 50%; 
+            border: 6px solid white; 
+            box-shadow: 0 25px 70px rgba(15,39,68,0.18);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-container:hover .profile-img {
+            transform: scale(1.02);
+        }
+
+        .profile-ring { 
+            position: absolute; 
+            top: -12px; 
+            left: -12px; 
+            right: -12px; 
+            bottom: -12px; 
+            border: 2px solid transparent;
+            border-top-color: var(--accent-gold);
+            border-right-color: var(--accent-gold-light);
+            border-radius: 50%; 
+            animation: rotate 25s linear infinite; 
+        }
+
+        .profile-ring::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: 1px solid rgba(201,168,76,0.3);
+            border-radius: 50%;
+            animation: rotate 35s linear infinite reverse;
+        }
+
+        @keyframes rotate { 
+            from { transform: rotate(0deg); } 
+            to { transform: rotate(360deg); } 
+        }
+
+        .profile-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient-dark);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 15px rgba(15,39,68,0.3);
+            z-index: 10;
+        }
+
+        /* ===== SECTIONS ===== */
+        section { 
+            padding: 6rem 5%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+
+        .section-header { 
+            text-align: center; 
+            margin-bottom: 3.5rem; 
+        }
+
+        .section-header h2 { 
+            font-size: 2.6rem; 
+            color: var(--primary-navy); 
+            margin-bottom: 0.8rem; 
+            position: relative; 
+            display: inline-block;
+        }
+
+        .section-header h2::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -12px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 50px; 
+            height: 3px; 
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-top: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        /* ===== PHILOSOPHY ===== */
+        .philosophy { 
+            background: white; 
+            border-radius: 24px; 
+            padding: 3.5rem; 
+            box-shadow: var(--shadow-soft); 
+            margin: 2rem 0; 
+            position: relative; 
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .philosophy::before { 
+            content: '"'; 
+            position: absolute; 
+            top: -10px; 
+            left: 25px; 
+            font-family: 'Playfair Display', serif; 
+            font-size: 12rem; 
+            color: rgba(15,39,68,0.04); 
+            line-height: 1; 
+        }
+
+        .philosophy-content { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 1.45rem; 
+            line-height: 1.9; 
+            font-style: italic; 
+            position: relative; 
+            z-index: 1; 
+            text-align: justify;
+            color: var(--text-dark);
+        }
+
+        .philosophy-author { 
+            margin-top: 1.8rem; 
+            font-weight: 600; 
+            color: var(--primary-navy);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+
+        .philosophy-author::before {
+            content: '—';
+            margin-right: 8px;
+            color: var(--accent-gold);
+        }
+
+        /* ===== SPECIALTIES ===== */
+        .specialties-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 3rem; 
+        }
+
+        .specialty-card { 
+            background: white; 
+            border-radius: 20px; 
+            padding: 2.5rem; 
+            box-shadow: var(--shadow-soft); 
+            transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialty-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .specialty-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: var(--shadow-medium);
+        }
+
+        .specialty-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .specialty-icon { 
+            font-size: 2.8rem; 
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .specialty-card:hover .specialty-icon {
+            transform: scale(1.1);
+        }
+
+        .specialty-card h3 { 
+            font-size: 1.35rem; 
+            margin-bottom: 1.2rem; 
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        .specialty-card ul { 
+            list-style: none; 
+        }
+
+        .specialty-card li { 
+            padding: 0.55rem 0; 
+            padding-left: 1.6rem; 
+            position: relative; 
+            font-size: 0.94rem; 
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .specialty-card li::before { 
+            content: '→'; 
+            position: absolute; 
+            left: 0; 
+            color: var(--accent-gold); 
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .specialty-card li:hover {
+            color: var(--text-dark);
+        }
+
+        .specialty-card li:hover::before {
+            transform: translateX(4px);
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline { 
+            position: relative; 
+            padding: 2rem 0; 
+        }
+
+        .timeline::before { 
+            content: ''; 
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 2px; 
+            height: 100%; 
+            background: linear-gradient(to bottom, var(--primary-navy), var(--primary-teal), var(--accent-gold)); 
+        }
+
+        .timeline-item { 
+            display: flex; 
+            justify-content: flex-end; 
+            padding-right: 50%; 
+            position: relative; 
+            margin: 2.5rem 0; 
+        }
+
+        .timeline-item:nth-child(even) { 
+            justify-content: flex-start; 
+            padding-right: 0; 
+            padding-left: 50%; 
+        }
+
+        .timeline-content { 
+            background: white; 
+            padding: 1.8rem; 
+            border-radius: 16px; 
+            box-shadow: var(--shadow-soft); 
+            max-width: 460px; 
+            margin: 0 2.5rem; 
+            border-left: 4px solid var(--primary-navy);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content { 
+            border-left: none; 
+            border-right: 4px solid var(--primary-teal); 
+        }
+
+        .timeline-date { 
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            background: var(--gradient-dark); 
+            color: white; 
+            padding: 0.5rem 1.1rem; 
+            border-radius: 25px; 
+            font-size: 0.82rem; 
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            box-shadow: 0 4px 15px rgba(15,39,68,0.2);
+            white-space: nowrap;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date { 
+            right: calc(50% + 22px); 
+        }
+
+        .timeline-item:nth-child(even) .timeline-date { 
+            left: calc(50% + 22px); 
+        }
+
+        .timeline-dot { 
+            position: absolute; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 18px; 
+            height: 18px; 
+            background: white; 
+            border: 4px solid var(--accent-gold); 
+            border-radius: 50%; 
+            z-index: 10;
+            box-shadow: 0 0 0 6px rgba(201,168,76,0.15);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            box-shadow: 0 0 0 10px rgba(201,168,76,0.2);
+        }
+
+        .timeline-content h4 { 
+            font-size: 1.15rem; 
+            color: var(--primary-navy); 
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .timeline-content .institution { 
+            color: var(--primary-teal); 
+            font-weight: 600; 
+            font-size: 0.88rem; 
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.02em;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ===== GALLERY ===== */
+        .photo-gallery { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 2rem; 
+            margin-top: 3rem; 
+        }
+
+        .photo-card { 
+            background: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: var(--shadow-soft); 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-light);
+        }
+
+        .photo-card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: var(--shadow-medium);
+        }
+
+        .photo-card .img-container { 
+            width: 100%; 
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-card .img-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(15,39,68,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .photo-card:hover .img-container::after {
+            opacity: 1;
+        }
+
+        .photo-card img { 
+            width: 100%; 
+            height: auto; 
+            max-height: 400px; 
+            object-fit: contain; 
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .photo-caption { 
+            padding: 1.2rem; 
+            text-align: center; 
+            font-size: 0.9rem; 
+            color: var(--text-muted); 
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+        }
+
+        .skill-category { 
+            background: white; 
+            padding: 1.8rem; 
+            border-radius: 16px; 
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .skill-category h4 { 
+            color: var(--primary-navy); 
+            margin-bottom: 1.2rem; 
+            font-size: 1.05rem; 
+            border-bottom: 2px solid var(--accent-gold); 
+            padding-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        .skill-category ul { 
+            list-style: none; 
+        }
+
+        .skill-category li { 
+            padding: 0.4rem 0; 
+            font-size: 0.88rem; 
+            color: var(--text-muted); 
+            padding-left: 1.2rem; 
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .skill-category li::before { 
+            content: '•'; 
+            color: var(--accent-gold); 
+            position: absolute; 
+            left: 0; 
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 0.9;
+        }
+
+        .skill-category li:hover {
+            color: var(--text-dark);
+        }
+
+        /* ===== CREDENTIALS ===== */
+        .credentials-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+        }
+
+        .credential-item { 
+            background: white; 
+            padding: 1.5rem; 
+            border-radius: 14px; 
+            box-shadow: var(--shadow-soft); 
+            display: flex; 
+            align-items: start; 
+            gap: 1rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.35s ease;
+        }
+
+        .credential-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(201,168,76,0.3);
+        }
+
+        .credential-icon { 
+            font-size: 1.6rem; 
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .credential-text h4 { 
+            font-size: 0.98rem; 
+            margin-bottom: 0.3rem; 
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        .credential-text p { 
+            font-size: 0.84rem; 
+            color: var(--text-light);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact { 
+            background: var(--gradient-dark); 
+            color: white; 
+            border-radius: 24px; 
+            padding: 4.5rem; 
+            text-align: center; 
+            margin-top: 4rem; 
+            position: relative; 
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .contact::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .contact h2 { 
+            color: white; 
+            font-size: 2.6rem; 
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact > p {
+            position: relative;
+            z-index: 1;
+            color: rgba(255,255,255,0.75);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .contact-grid { 
+            display: flex; 
+            justify-content: center; 
+            gap: 4rem; 
+            margin-top: 2rem; 
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 0.7rem; 
+            max-width: 320px; 
+        }
+
+        .contact-icon { 
+            font-size: 1.8rem; 
+            background: rgba(255,255,255,0.12); 
+            width: 64px; 
+            height: 64px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            transition: all 0.35s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-item:hover .contact-icon {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .contact-item span:first-of-type {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-gold-light);
+            font-weight: 500;
+        }
+
+        .contact-item a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: 600; 
+            word-break: break-all;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-gold-light);
+        }
+
+        .contact-item span.address-text { 
+            line-height: 1.5; 
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* ===== FOOTER ===== */
+        footer { 
+            text-align: center; 
+            padding: 3rem 2rem 2rem; 
+            color: var(--text-light); 
+            font-size: 0.88rem; 
+            border-top: 1px solid var(--border-light); 
+            margin-top: 4rem; 
+        }
+
+        .certificates-banner { 
+            display: flex; 
+            justify-content: center; 
+            gap: 1rem; 
+            margin-bottom: 1.5rem; 
+            flex-wrap: wrap; 
+        }
+
+        .cert-badge { 
+            background: rgba(15,39,68,0.06); 
+            padding: 0.5rem 1.2rem; 
+            border-radius: 25px; 
+            font-size: 0.78rem; 
+            font-weight: 600; 
+            color: var(--primary-navy);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .cert-badge:hover {
+            background: rgba(15,39,68,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero-content { grid-template-columns: 1fr; text-align: center; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .hero-text .tagline { border-left: none; border-top: 3px solid var(--accent-gold); padding-left: 0; padding-top: 1rem; text-align: center; }
-            .profile-container { width: 250px; height: 250px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .hero-text h1 { font-size: 2.6rem; }
+            .hero-text .tagline { border-left: none; border-top: 3px solid var(--accent-gold); padding-left: 0; padding-top: 1.2rem; text-align: center; }
+            .profile-container { width: 260px; height: 260px; }
             .photo-gallery { grid-template-columns: 1fr; }
             .timeline::before { left: 30px; }
             .timeline-item, .timeline-item:nth-child(even) { justify-content: flex-start; padding-left: 80px; padding-right: 0; }
-            .timeline-date { left: 0 !important; right: auto !important; top: -40px; }
+            .timeline-date { left: 0 !important; right: auto !important; top: -45px; font-size: 0.75rem; }
             .timeline-dot { left: 30px; }
-            .timeline-content { margin: 0; border-right: none !important; border-left: 4px solid var(--primary-medical) !important; }
-            .contact { padding: 2rem; }
+            .timeline-content { margin: 0; border-right: none !important; border-left: 4px solid var(--primary-navy) !important; }
+            .contact { padding: 2.5rem 1.5rem; }
             .hero-stats { justify-content: center; }
+            .contact-grid { gap: 2.5rem; }
+            section { padding: 4rem 5%; }
+            .philosophy { padding: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 { font-size: 2.1rem; }
+            .section-header h2 { font-size: 2rem; }
+            .stat-item { min-width: 100px; padding: 0.8rem 1rem; }
+            .stat-number { font-size: 1.3rem; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
-    <nav>
+    <nav id="navbar">
         <a href="#" class="nav-logo">Dr. Hamid Fazal</a>
         <ul class="nav-links">
             <li><a href="#philosophy">Philosophy</a></li>
@@ -148,16 +1041,19 @@
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#credentials">Credentials</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://hamidfazal.github.io/new-dashboard/" class="nav-btn">Research Dashboard</a></li>
+            <li><a href="https://hamidfazal.github.io/new-dashboard/" class="nav-btn" target="_blank">Research Dashboard</a></li>
         </ul>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Dr. Hamid Fazal</h1>
+                <h1>
+                    <span class="title-accent">Physician & Researcher</span>
+                    Dr. Hamid Fazal
+                </h1>
                 <p class="subtitle">MBBS, MD (USA), PGD (Nutrition) — Integrated Care Specialist</p>
-                
+
                 <p class="tagline">
                     A clinical physician working at the vital interface of metabolic medicine and behavioral health. Expert in outpatient care coordination, critical care medicine, and specialized psychiatry outreach programs—bridging the gap between physical health complications and mental well-being.
                 </p>
@@ -165,45 +1061,59 @@
                 <div class="hero-cta-box">
                     <h3>📊 Medical Research & Knowledge Portals</h3>
                     <p>
-                        Explore my centralized <a href="https://hamidfazal.github.io/lectures/">Clinical Lecture Directory</a> or browse my newly launched global portal for digital healthcare assets: <a href="https://hamidfazal.github.io/new-dashboard/">Research Dashboard & Resources</a>.
+                        Explore my centralized <a href="https://hamidfazal.github.io/lectures/" target="_blank">Clinical Lecture Directory</a> or browse my newly launched global portal for digital healthcare assets: <a href="https://hamidfazal.github.io/new-dashboard/" target="_blank">Research Dashboard & Resources</a>.
                     </p>
                 </div>
 
                 <div class="hero-stats">
-                    <div class="stat-item"><span class="stat-number">4+ Years</span><span class="stat-label">OPD In-Charge</span></div>
-                    <div class="stat-item"><span class="stat-number">ICU / COVID</span><span class="stat-label">Critical Care Experience</span></div>
-                    <div class="stat-item"><span class="stat-number">USA</span><span class="stat-label">ECFMG Certified</span></div>
+                    <div class="stat-item">
+                        <span class="stat-number">4+ Years</span>
+                        <span class="stat-label">Diabetes, Hypertension & CKD</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1 Year</span>
+                        <span class="stat-label">Mental Health Outreach</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">ICU / COVID</span>
+                        <span class="stat-label">Critical Care Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">USA</span>
+                        <span class="stat-label">ECFMG Certified</span>
+                    </div>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="profile-container">
                     <div class="profile-ring"></div>
                     <img src="https://i.ibb.co/Y45NfqWY/IMG-20230818-WA0026.jpg" alt="Dr. Hamid Fazal" class="profile-img">
+                    <div class="profile-badge">ECFMG Certified</div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="philosophy">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Clinical Focus & Philosophy</h2>
             <p>Whole-patient approach to intricate co-morbidities</p>
         </div>
-        <div class="philosophy">
+        <div class="philosophy fade-in">
             <div class="philosophy-content">
                 Effective modern healthcare requires evaluating the human body and mind as an inseparable unit. My professional objective centers on applying stringent global medical benchmarks—backed by US clinical trials research and advanced metabolic training—to local healthcare challenges. By understanding the metabolic profiles of patients, nutrition protocols in chronic diseases, and the psychological impact of severe physical illness, I strive to design comprehensive paths to patient recovery.
             </div>
-            <div class="philosophy-author">— Dr. Hamid Fazal, MD (ECFMG Certified)</div>
+            <div class="philosophy-author">Dr. Hamid Fazal, MD (ECFMG Certified)</div>
         </div>
     </section>
 
     <section id="specialties">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Areas of Specialized Impact</h2>
             <p>Dual-spectrum expertise for whole-patient care</p>
         </div>
         <div class="specialties-grid">
-            <div class="specialty-card">
+            <div class="specialty-card fade-in">
                 <div class="specialty-icon">🩺</div>
                 <h3>Chronic Disease Management & OPD</h3>
                 <ul>
@@ -215,7 +1125,7 @@
                     <li>Critical Care & ICU Patient Stabilisation</li>
                 </ul>
             </div>
-            <div class="specialty-card">
+            <div class="specialty-card fade-in">
                 <div class="specialty-icon">🧠</div>
                 <h3>Neuropsychiatry & Outreach Focus</h3>
                 <ul>
@@ -227,7 +1137,7 @@
                     <li>Behavioral Conditions in Vulnerable Groups</li>
                 </ul>
             </div>
-            <div class="specialty-card">
+            <div class="specialty-card fade-in">
                 <div class="specialty-icon">🥗</div>
                 <h3>Clinical Nutrition, Research & AI</h3>
                 <ul>
@@ -243,12 +1153,12 @@
     </section>
 
     <section id="experience">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Professional Journey</h2>
             <p>From international research to deep community impact</p>
         </div>
         <div class="timeline">
-            <div class="timeline-item">
+            <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">2025 – Present</div>
                 <div class="timeline-content">
@@ -257,7 +1167,7 @@
                     <p>Directing mobile units addressing medical needs and mental health in underserved sectors at Creek General Hospital Korangi. Leading tri-weekly medical camp operations.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">2021 – 2025</div>
                 <div class="timeline-content">
@@ -266,7 +1176,7 @@
                     <p>Served as OPD In-Charge managing a massive patient base across diabetes, hypertension, and advanced chronic kidney disease. Directed clinical operations, ICU emergency triage protocols, and supervised dialysis unit functions.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">2021 – 2023</div>
                 <div class="timeline-content">
@@ -275,7 +1185,7 @@
                     <p>Managed inpatient and outpatient psychiatric recovery tracks, drafting multifaceted chronic illness and behavioral health protocols.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">2017 – Present</div>
                 <div class="timeline-content">
@@ -284,7 +1194,7 @@
                     <p>Providing essential medical triage and substance-dependence psychiatric counseling for sensitive and high-risk demographics.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">2014 – 2019</div>
                 <div class="timeline-content">
@@ -293,7 +1203,7 @@
                     <p>Delivered targeted institutional mental health care while tracking long-term metabolic data profiles of patients on atypical antipsychotics.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">2012</div>
                 <div class="timeline-content">
@@ -302,7 +1212,7 @@
                     <p>Managed acute emergency department surges, providing critical life-saving critical care, trauma management, and ventilation support updates.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">2005 – 2006</div>
                 <div class="timeline-content">
@@ -311,7 +1221,7 @@
                     <p>Conducted breakthrough clinical Alzheimer's investigations under international pioneer Dr. Barry Reisberg. Contributed to peer-reviewed American scientific output.</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">2002 – 2006</div>
                 <div class="timeline-content">
@@ -324,18 +1234,18 @@
     </section>
 
     <section id="gallery">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>In Action</h2>
             <p>Clinical excellence and community service</p>
         </div>
         <div class="photo-gallery">
-            <div class="photo-card">
+            <div class="photo-card fade-in">
                 <div class="img-container">
                     <img src="https://i.ibb.co/Y45NfqWY/IMG-20230818-WA0026.jpg" alt="Dr. Hamid Fazal - Professional Care">
                 </div>
                 <div class="photo-caption">Evidence-Based Clinical Practice & Continuous Learning</div>
             </div>
-            <div class="photo-card">
+            <div class="photo-card fade-in">
                 <div class="img-container">
                     <img src="https://i.ibb.co/tw8XQ1bx/IMG-20231228-194224.jpg" alt="Dr. Hamid Fazal - Community Outreach">
                 </div>
@@ -345,12 +1255,12 @@
     </section>
 
     <section id="skills">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Core Competencies</h2>
             <p>Clinical, research, and technical proficiency</p>
         </div>
         <div class="skills-grid">
-            <div class="skill-category">
+            <div class="skill-category fade-in">
                 <h4>Clinical OPD & ICU</h4>
                 <ul>
                     <li>Internal Medicine & Diagnostics</li>
@@ -360,7 +1270,7 @@
                     <li>Geriatric Medicine Integration</li>
                 </ul>
             </div>
-            <div class="skill-category">
+            <div class="skill-category fade-in">
                 <h4>Neuropsychiatry Focus</h4>
                 <ul>
                     <li>Neurocognitive Assessments</li>
@@ -370,7 +1280,7 @@
                     <li>Therapeutic Patient Comm.</li>
                 </ul>
             </div>
-            <div class="skill-category">
+            <div class="skill-category fade-in">
                 <h4>Academic & Research</h4>
                 <ul>
                     <li>FDA-Regulated Trial Compliance</li>
@@ -380,7 +1290,7 @@
                     <li>AI Medical Asset Creation</li>
                 </ul>
             </div>
-            <div class="skill-category">
+            <div class="skill-category fade-in">
                 <h4>Technical Certs</h4>
                 <ul>
                     <li>Advanced Cardiac Life Support (ACLS)</li>
@@ -394,61 +1304,61 @@
     </section>
 
     <section id="credentials">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Global Credentials</h2>
             <p>International validation, localized implementation</p>
         </div>
         <div class="credentials-grid">
-            <div class="credential-item">
+            <div class="credential-item fade-in">
                 <div class="credential-icon">🇺🇸</div>
                 <div class="credential-text">
                     <h4>ECFMG Certification</h4>
                     <p>USA – 2003, Verified Indefinitely</p>
                 </div>
             </div>
-            <div class="credential-item">
+            <div class="credential-item fade-in">
                 <div class="credential-icon">🎓</div>
                 <div class="credential-text">
                     <h4>USMLE Step 3</h4>
                     <p>USA – 2006</p>
                 </div>
             </div>
-            <div class="credential-item">
+            <div class="credential-item fade-in">
                 <div class="credential-icon">📋</div>
                 <div class="credential-text">
                     <h4>USMLE Step 2 CK & CS</h4>
                     <p>USA – 2001-2002</p>
                 </div>
             </div>
-            <div class="credential-item">
+            <div class="credential-item fade-in">
                 <div class="credential-icon">📄</div>
                 <div class="credential-text">
                     <h4>USMLE Step 1</h4>
                     <p>USA – 2000</p>
                 </div>
             </div>
-            <div class="credential-item">
+            <div class="credential-item fade-in">
                 <div class="credential-icon">📜</div>
                 <div class="credential-text">
                     <h4>FCPS Part I (Medicine & Allied)</h4>
                     <p>CPSP Pakistan – 2002</p>
                 </div>
             </div>
-            <div class="credential-item">
+            <div class="credential-item fade-in">
                 <div class="credential-icon">🍎</div>
                 <div class="credential-text">
                     <h4>PG Diploma in Clinical Nutrition</h4>
                     <p>AIOU – 2018</p>
                 </div>
             </div>
-            <div class="credential-item">
+            <div class="credential-item fade-in">
                 <div class="credential-icon">🫀</div>
                 <div class="credential-text">
                     <h4>ACLS Certification</h4>
                     <p>West Virginia University, USA</p>
                 </div>
             </div>
-            <div class="credential-item">
+            <div class="credential-item fade-in">
                 <div class="credential-icon">📱</div>
                 <div class="credential-text">
                     <h4>Basic Ultrasound Training</h4>
@@ -459,7 +1369,7 @@
     </section>
 
     <section id="contact">
-        <div class="contact">
+        <div class="contact fade-in">
             <h2>Contact & Collaboration</h2>
             <p>Available for senior clinical management openings, research collaboration, and medical training development projects.</p>
             <div class="contact-grid">
@@ -481,12 +1391,56 @@
         <div class="certificates-banner">
             <span class="cert-badge">MD ECFMG Certified</span>
             <span class="cert-badge">PMDC Registered Medicine Fellow</span>
+            <span class="cert-badge">Clinical Research Fellow</span>
             <span class="cert-badge">US Post-Graduate Research Scholar</span>
             <span class="cert-badge">ACLS Certified Clinician</span>
         </div>
         <p>&copy; 2026 Dr. Hamid Fazal. All rights reserved.</p>
     </footer>
 
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
-
