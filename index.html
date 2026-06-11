@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Hamid Fazal, MD | Integrated Care & Medical Education Specialist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-navy: #0f2744;
@@ -38,6 +38,8 @@
         }
 
         h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+
+        em { font-family: 'Lora', serif; font-style: italic; font-weight: 400; }
 
         /* ===== NAVIGATION ===== */
         nav {
@@ -304,6 +306,144 @@
             box-shadow: 0 4px 15px rgba(15,39,68,0.25);
             z-index: 10;
         }
+
+        /* ===== CHAPTERS SECTION ===== */
+        .chapters-outer {
+            background: var(--primary-navy);
+            padding: 5rem 5%;
+        }
+
+        .chapters-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .chapters-eyebrow {
+            text-align: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .chapters-heading {
+            text-align: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .chapters-heading em {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-gold-light);
+        }
+
+        .chapters-sub {
+            text-align: center;
+            color: rgba(255,255,255,0.55);
+            font-size: 0.95rem;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .chapter-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-top: 3px solid var(--accent-gold);
+            border-radius: 14px;
+            padding: 2rem 1.8rem 1.8rem;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .chapter-card:hover {
+            background: rgba(255,255,255,0.09);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+        }
+
+        .chapter-card:hover::after { opacity: 1; }
+
+        .chapter-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .chapter-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .chapter-title em {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-gold-light);
+        }
+
+        .chapter-meta {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.45);
+            font-weight: 500;
+            margin-top: 0.2rem;
+        }
+
+        .chapter-desc {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.65;
+            margin-top: 0.5rem;
+            flex: 1;
+        }
+
+        .chapter-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-gold-light);
+            margin-top: 1.2rem;
+            letter-spacing: 0.02em;
+            transition: gap 0.25s ease;
+        }
+
+        .chapter-card:hover .chapter-cta { gap: 10px; }
 
         /* ===== CLINICAL EXPOSURE CHIPS ===== */
         .exposure-section {
@@ -593,6 +733,24 @@
             z-index: 10;
         }
 
+        /* Chapter deep-link badge on timeline items */
+        .timeline-chapter-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 0.8rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary-teal);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.25s ease, color 0.25s ease;
+        }
+        .timeline-chapter-link:hover {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
+        }
+
         .timeline-content h4 {
             font-size: 1.1rem;
             color: var(--primary-navy);
@@ -828,6 +986,24 @@
             margin-top: 4rem;
         }
 
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: var(--primary-teal);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav a:hover { color: var(--accent-gold); }
+
         .certificates-banner {
             display: flex;
             justify-content: center;
@@ -856,6 +1032,10 @@
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .chapters-grid { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero-content { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
@@ -872,6 +1052,7 @@
             .hero-stats { justify-content: center; }
             section { padding: 4rem 5%; }
             .philosophy { padding: 2rem; }
+            .chapters-outer { padding: 3.5rem 5%; }
         }
     </style>
 </head>
@@ -880,17 +1061,17 @@
     <nav id="navbar">
         <a href="#" class="nav-logo">Dr. Hamid Fazal</a>
         <ul class="nav-links">
+            <li><a href="#chapters">Chapters</a></li>
             <li><a href="#philosophy">Philosophy</a></li>
-            <li><a href="#exposure">Clinical Focus</a></li>
             <li><a href="#specialties">Specialties</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="#gallery">Gallery</a></li>
             <li><a href="#credentials">Credentials</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="https://hamidfazal.github.io/new-dashboard/" class="nav-btn" target="_blank">Research Dashboard</a></li>
         </ul>
     </nav>
 
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -939,6 +1120,43 @@
         </div>
     </section>
 
+    <!-- CHAPTERS -->
+    <div id="chapters" class="chapters-outer">
+        <div class="chapters-inner">
+            <p class="chapters-eyebrow">Portfolio</p>
+            <h2 class="chapters-heading">A Career Told in <em>Chapters</em></h2>
+            <p class="chapters-sub">Each chapter is its own story — click to read it in full.</p>
+            <div class="chapters-grid">
+
+                <a href="https://hamidfazal.github.io/US/" class="chapter-card" target="_blank">
+                    <span class="chapter-tag">2002 – 2006 · USA</span>
+                    <span class="chapter-title">An <em>American</em> Chapter</span>
+                    <span class="chapter-meta">New York · West Virginia · Arkansas</span>
+                    <p class="chapter-desc">Clinical training, FDA-regulated research, and the USMLE trilogy — an immersive cross-continental passage that shaped how I think as a physician.</p>
+                    <span class="chapter-cta">Read the chapter →</span>
+                </a>
+
+                <a href="https://hamidfazal.github.io/SSWAB-Trust-Kidney-Care/" class="chapter-card" target="_blank">
+                    <span class="chapter-tag">2021 – 2025 · Karachi</span>
+                    <span class="chapter-title">Four Years at <em>SSWAB Kidney Care</em></span>
+                    <span class="chapter-meta">Senior Medical Officer · OPD In-Charge</span>
+                    <p class="chapter-desc">Building a nephrology OPD from the ground up under Professor Waqar Kazmi — where chronic disease management became a daily discipline and community trust was earned slowly.</p>
+                    <span class="chapter-cta">Read the chapter →</span>
+                </a>
+
+                <a href="https://hamidfazal.github.io/community-outreach-/" class="chapter-card" target="_blank">
+                    <span class="chapter-tag">2025 – Present · Karachi</span>
+                    <span class="chapter-title">A Different Kind of <em>Journey</em></span>
+                    <span class="chapter-meta">Field RMO · Karwan-e-Hayat Outreach</span>
+                    <p class="chapter-desc">Leaving hospital comfort for mobile medical camps in Karachi's most underserved communities — one year of field medicine, mental health outreach, and what it means to serve without safety nets.</p>
+                    <span class="chapter-cta">Read the chapter →</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CLINICAL EXPOSURE -->
     <div id="exposure" class="exposure-section">
         <div class="exposure-container">
             <h3>Clinical Training & Core Areas of Exposure</h3>
@@ -967,6 +1185,7 @@
         </div>
     </div>
 
+    <!-- PHILOSOPHY -->
     <section id="philosophy">
         <div class="section-header fade-in">
             <h2>Clinical Focus & Philosophy</h2>
@@ -980,6 +1199,7 @@
         </div>
     </section>
 
+    <!-- SPECIALTIES -->
     <section id="specialties">
         <div class="section-header fade-in">
             <h2>Areas of Specialized Impact</h2>
@@ -1025,6 +1245,7 @@
         </div>
     </section>
 
+    <!-- EXPERIENCE TIMELINE -->
     <section id="experience">
         <div class="section-header fade-in">
             <h2>Professional Journey</h2>
@@ -1038,6 +1259,7 @@
                     <h4>Field RMO – Psychiatric Outreach</h4>
                     <div class="institution">Karwan-e-Hayat / KCPC, Karachi</div>
                     <p>Directing mobile units addressing medical needs and mental health in underserved sectors at Creek General Hospital Korangi. Leading tri-weekly medical camp operations.</p>
+                    <a href="https://hamidfazal.github.io/community-outreach-/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
                 </div>
             </div>
             <div class="timeline-item fade-in">
@@ -1045,8 +1267,9 @@
                 <div class="timeline-date">2021 – 2025</div>
                 <div class="timeline-content">
                     <h4>OPD In-Charge — Senior Medical Officer</h4>
-                    <div class="institution">SSAWB Trust, Karachi</div>
-                    <p>Served as <strong>OPD In-Charge</strong> for Diabetes Mellitus (DM), Hypertension (HTN), and Chronic Kidney Disease (CKD) — managing a massive patient base, directing clinical operations, ICU emergency triage protocols, and supervising dialysis unit functions.</p>
+                    <div class="institution">SSWAB Trust Kidney Care, Karachi</div>
+                    <p>Served as <strong>OPD In-Charge</strong> for Diabetes Mellitus (DM), Hypertension (HTN), and Chronic Kidney Disease (CKD) — managing a massive patient base under Professor Waqar Kazmi, and overseeing dialysis unit functions.</p>
+                    <a href="https://hamidfazal.github.io/SSWAB-Trust-Kidney-Care/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
                 </div>
             </div>
             <div class="timeline-item fade-in">
@@ -1064,7 +1287,7 @@
                 <div class="timeline-content">
                     <h4>Clinical Training & Experience in Diabetology</h4>
                     <div class="institution">Baqai Institute of Diabetology and Endocrinology (BIDE)</div>
-                    <p>Acquired intensive clinical exposure in an elite, globally recognized center of excellence. Managed complex inpatient tracks, metabolic stability protocols, and advanced ward operations specifically for complicated diabetes mellitus cases.</p>
+                    <p>Acquired intensive clinical exposure in an elite, globally recognized center of excellence. Managed complex inpatient tracks and advanced ward operations for complicated diabetes mellitus cases.</p>
                 </div>
             </div>
             <div class="timeline-item fade-in">
@@ -1091,16 +1314,16 @@
                 <div class="timeline-content">
                     <h4>Casualty Medical Officer — ICU / Trauma Frontlines</h4>
                     <div class="institution">Civil Hospital Karachi, Jamal Noor Hospital & Hamdard University Hospital</div>
-                    <p>2 years of critical care and trauma management across three major institutions, spanning the COVID-19 pandemic. Managed acute emergency department surges, providing life-saving critical care, trauma management, and ventilation support updates.</p>
+                    <p>Critical care and trauma management across three major institutions, spanning the COVID-19 pandemic. Managed acute emergency department surges, life-saving critical care, and ventilation support.</p>
                 </div>
             </div>
             <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">2007 – 2008</div>
                 <div class="timeline-content">
-                    <h4>FCPS Part-II Residency Training (1 Year)</h4>
+                    <h4>FCPS Part-II Residency Training</h4>
                     <div class="institution">Abbasi Shaheed Hospital, Karachi</div>
-                    <p>Completed 1 formal year of rigorous postgraduate training in <strong>Medical Unit 2 and the Department of Dermatology</strong> under the direct supervision of elite pioneer <strong>Professor Abu Noeum Faruqi</strong>, cementing core internal medicine competencies.</p>
+                    <p>One formal year of rigorous postgraduate training in <strong>Medical Unit 2 and the Department of Dermatology</strong> under the supervision of <strong>Professor Abu Noeum Faruqi</strong>, cementing core internal medicine competencies.</p>
                 </div>
             </div>
             <div class="timeline-item fade-in">
@@ -1109,7 +1332,8 @@
                 <div class="timeline-content">
                     <h4>Clinical Research Fellow – Aging & Dementia</h4>
                     <div class="institution">NYU Medical Center, USA</div>
-                    <p>Conducted breakthrough clinical Alzheimer's investigations under international pioneer Dr. Barry Reisberg. Contributed to peer-reviewed American scientific output.</p>
+                    <p>Conducted Alzheimer's clinical investigations under international pioneer Dr. Barry Reisberg. Contributed to peer-reviewed American scientific output.</p>
+                    <a href="https://hamidfazal.github.io/US/" class="timeline-chapter-link" target="_blank">↗ Read the American chapter</a>
                 </div>
             </div>
             <div class="timeline-item fade-in">
@@ -1118,12 +1342,14 @@
                 <div class="timeline-content">
                     <h4>Clinical Research Fellow – FDA Drug Trials</h4>
                     <div class="institution">CAMC / WVU, USA</div>
-                    <p>Participated in various FDA-regulated pharmaceutical drug trials and research projects, contributing to clinical data collection, patient monitoring, and protocol compliance.</p>
+                    <p>Participated in FDA-regulated pharmaceutical drug trials, contributing to clinical data collection, patient monitoring, and protocol compliance under GCP standards.</p>
+                    <a href="https://hamidfazal.github.io/US/" class="timeline-chapter-link" target="_blank">↗ Read the American chapter</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- GALLERY -->
     <section id="gallery">
         <div class="section-header fade-in">
             <h2>In Action</h2>
@@ -1145,6 +1371,7 @@
         </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills">
         <div class="section-header fade-in">
             <h2>Core Competencies</h2>
@@ -1194,6 +1421,7 @@
         </div>
     </section>
 
+    <!-- CREDENTIALS -->
     <section id="credentials">
         <div class="section-header fade-in">
             <h2>Global Credentials</h2>
@@ -1259,6 +1487,7 @@
         </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
         <div class="contact fade-in">
             <h2>Contact & Collaboration</h2>
@@ -1279,6 +1508,12 @@
     </section>
 
     <footer>
+        <nav class="footer-nav">
+            <a href="https://hamidfazal.github.io/US/" target="_blank">An American Chapter</a>
+            <a href="https://hamidfazal.github.io/SSWAB-Trust-Kidney-Care/" target="_blank">SSWAB Kidney Care</a>
+            <a href="https://hamidfazal.github.io/community-outreach-/" target="_blank">Community Outreach</a>
+            <a href="https://hamidfazal.github.io/new-dashboard/" target="_blank">Research Dashboard</a>
+        </nav>
         <div class="certificates-banner">
             <span class="cert-badge">MD ECFMG Certified</span>
             <span class="cert-badge">FCPS-II Training (Internal Medicine)</span>
@@ -1288,49 +1523,28 @@
             <span class="cert-badge">US Post-Graduate Research Scholar</span>
             <span class="cert-badge">ACLS Certified Clinician</span>
         </div>
-        <p>&copy; 2026 Dr. Hamid Fazal. All rights reserved.</p>
+        <p>&copy; 2026 Dr. Hamid Fazal. All rights reserved. · <a href="https://hamidfazal.github.io" style="color: var(--primary-teal); text-decoration: none;">hamidfazal.github.io</a></p>
     </footer>
 
     <script>
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
-
-        // Scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
