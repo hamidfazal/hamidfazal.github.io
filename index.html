@@ -872,37 +872,80 @@
         .credentials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
+            gap: 1.2rem;
             margin-top: 3rem;
         }
 
         .credential-item {
             background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
+            padding: 1.4rem 1.6rem;
+            border-radius: 14px;
             box-shadow: var(--shadow-soft);
             display: flex;
-            align-items: start;
-            gap: 1rem;
+            align-items: center;
+            gap: 1.1rem;
             border: 1px solid var(--border-light);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .credential-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: var(--gradient-gold);
+            border-radius: 4px 0 0 4px;
         }
 
         .credential-item:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-medium);
+            border-color: rgba(201,168,76,0.25);
+        }
+
+        .credential-icon {
+            font-size: 1.6rem;
+            min-width: 38px;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .credential-text { flex: 1; }
+
+        .credential-text h4 {
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+
+        .credential-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--primary-teal);
+            background: rgba(26,95,90,0.08);
+            padding: 0.18rem 0.7rem;
+            border-radius: 20px;
+            border: 1px solid rgba(26,95,90,0.15);
+        }
+
+        .credential-badge.gold {
+            color: #8a6a1a;
+            background: rgba(201,168,76,0.12);
             border-color: rgba(201,168,76,0.3);
         }
 
-        .credential-icon { font-size: 1.5rem; min-width: 35px; text-align: center; }
-
-        .credential-text h4 {
-            font-size: 0.95rem;
-            margin-bottom: 0.2rem;
+        .credential-badge.navy {
             color: var(--primary-navy);
+            background: rgba(15,39,68,0.07);
+            border-color: rgba(15,39,68,0.15);
         }
-
-        .credential-text p { font-size: 0.84rem; color: var(--text-light); font-weight: 500; }
 
         /* ===== CONTACT ===== */
         .contact {
@@ -1432,56 +1475,56 @@
                 <div class="credential-icon">🇺🇸</div>
                 <div class="credential-text">
                     <h4>ECFMG Certification</h4>
-                    <p>USA – 2003, Verified Indefinitely</p>
+                    <span class="credential-badge gold">ECFMG · USA · Active</span>
                 </div>
             </div>
             <div class="credential-item fade-in">
                 <div class="credential-icon">🎓</div>
                 <div class="credential-text">
                     <h4>USMLE Step 3</h4>
-                    <p>USA – 2006</p>
+                    <span class="credential-badge">USMLE · Clinical Management</span>
                 </div>
             </div>
             <div class="credential-item fade-in">
                 <div class="credential-icon">📋</div>
                 <div class="credential-text">
                     <h4>USMLE Step 2 CK & CS</h4>
-                    <p>USA – 2001-2002</p>
+                    <span class="credential-badge">USMLE · Clinical Knowledge</span>
                 </div>
             </div>
             <div class="credential-item fade-in">
                 <div class="credential-icon">📄</div>
                 <div class="credential-text">
                     <h4>USMLE Step 1</h4>
-                    <p>USA – 2000</p>
+                    <span class="credential-badge">USMLE · Basic Sciences</span>
                 </div>
             </div>
             <div class="credential-item fade-in">
                 <div class="credential-icon">📜</div>
                 <div class="credential-text">
-                    <h4>FCPS Part I (Medicine & Allied)</h4>
-                    <p>CPSP Pakistan – 2002</p>
+                    <h4>FCPS Part I — Medicine & Allied</h4>
+                    <span class="credential-badge navy">CPSP · Pakistan</span>
                 </div>
             </div>
             <div class="credential-item fade-in">
                 <div class="credential-icon">🍎</div>
                 <div class="credential-text">
                     <h4>PG Diploma in Clinical Nutrition</h4>
-                    <p>AIOU – 2018</p>
+                    <span class="credential-badge navy">AIOU · Pakistan</span>
                 </div>
             </div>
             <div class="credential-item fade-in">
                 <div class="credential-icon">🫀</div>
                 <div class="credential-text">
                     <h4>ACLS Certification</h4>
-                    <p>West Virginia University, USA</p>
+                    <span class="credential-badge gold">West Virginia University · USA</span>
                 </div>
             </div>
             <div class="credential-item fade-in">
-                <div class="credential-icon">📱</div>
+                <div class="credential-icon">🔬</div>
                 <div class="credential-text">
-                    <h4>Basic Ultrasound Training</h4>
-                    <p>Clinical Diagnostics Certification – 2002</p>
+                    <h4>Point-of-Care Ultrasound (POCUS)</h4>
+                    <span class="credential-badge navy">Clinical Diagnostics · Certified</span>
                 </div>
             </div>
         </div>
