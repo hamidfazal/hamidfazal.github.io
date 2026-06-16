@@ -90,6 +90,77 @@
         .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(15,39,68,0.25); }
         .nav-btn::after { display: none !important; }
 
+        /* ===== MOBILE HAMBURGER ===== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 44px; height: 44px;
+            background: none; border: none;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+        .hamburger:hover { background: rgba(15,39,68,0.07); }
+        .hamburger span {
+            display: block; height: 2px; width: 100%;
+            background: var(--primary-navy); border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            transform-origin: center;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile drawer */
+        .mobile-menu {
+            display: none;
+            position: fixed; top: 72px; left: 0; right: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 8px 30px rgba(15,39,68,0.12);
+            z-index: 999;
+            padding: 1.5rem 5% 2rem;
+            flex-direction: column;
+            gap: 0;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .mobile-menu.open {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .mobile-menu a {
+            display: block;
+            text-decoration: none;
+            color: var(--primary-navy);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
+        .mobile-menu a:hover { color: var(--accent-gold); padding-left: 8px; }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu .mobile-btn {
+            margin-top: 1.2rem;
+            background: var(--gradient-dark);
+            color: white !important;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .mobile-menu .mobile-btn:hover { padding-left: 0; opacity: 0.9; }
+
         /* ===== HERO ===== */
         .hero {
             min-height: 90vh;
@@ -179,6 +250,7 @@
             display: flex; flex-direction: column; gap: 0.5rem;
             transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
             position: relative; overflow: hidden;
+            cursor: pointer;
         }
         .chapter-card::after {
             content: ''; position: absolute; inset: 0;
@@ -198,8 +270,49 @@
         .chapter-title em { font-family: 'Lora', serif; font-style: italic; font-weight: 400; color: var(--accent-gold-light); }
         .chapter-meta { font-size: 0.8rem; color: rgba(255,255,255,0.45); font-weight: 500; margin-top: 0.2rem; }
         .chapter-desc { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.65; margin-top: 0.5rem; flex: 1; }
-        .chapter-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: var(--accent-gold-light); margin-top: 1.2rem; letter-spacing: 0.02em; transition: gap 0.25s ease; }
-        .chapter-card:hover .chapter-cta { gap: 10px; }
+
+        /* ===== CHAPTER CTA — bold, visible pill button ===== */
+        .chapter-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1.4rem;
+            padding: 0.65rem 1.2rem;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #f0c744 0%, #e8d5a3 50%, #c9a84c 100%);
+            border-radius: 30px;
+            box-shadow: 0 3px 14px rgba(201,168,76,0.45), 0 1px 4px rgba(0,0,0,0.2);
+            transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+            align-self: flex-start;
+            border: 1px solid rgba(255,255,255,0.25);
+            position: relative;
+            z-index: 2;
+        }
+        .chapter-cta::after { display: none !important; }
+        .chapter-card:hover .chapter-cta {
+            background: linear-gradient(135deg, #ffe566 0%, #f0d880 50%, #d4a83a 100%);
+            box-shadow: 0 6px 22px rgba(201,168,76,0.65), 0 2px 6px rgba(0,0,0,0.25);
+            transform: translateY(-1px);
+            gap: 12px;
+        }
+        .chapter-card.usa-card .chapter-cta {
+            background: linear-gradient(135deg, #90b8d4 0%, #b8d4e8 50%, #6a9ab8 100%);
+            box-shadow: 0 3px 14px rgba(144,184,212,0.45), 0 1px 4px rgba(0,0,0,0.2);
+        }
+        .chapter-card.usa-card:hover .chapter-cta {
+            background: linear-gradient(135deg, #aacde0 0%, #c8e0ef 50%, #80adc8 100%);
+            box-shadow: 0 6px 22px rgba(144,184,212,0.65), 0 2px 6px rgba(0,0,0,0.25);
+        }
+        .cta-arrow {
+            font-size: 1rem;
+            transition: transform 0.25s ease;
+            display: inline-block;
+        }
+        .chapter-card:hover .cta-arrow { transform: translateX(4px); }
 
         /* ===== CLINICAL EXPOSURE ===== */
         .exposure-section { background: var(--bg-warm); padding: 3.5rem 5%; border-bottom: 1px solid var(--border-light); }
@@ -273,13 +386,21 @@
         .timeline-item:nth-child(even) .timeline-date { left: calc(50% + 22px); }
         .timeline-dot { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 16px; height: 16px; background: white; border: 4px solid var(--accent-gold); border-radius: 50%; z-index: 10; }
         .timeline-chapter-link {
-            display: inline-flex; align-items: center; gap: 5px;
-            margin-top: 0.8rem; font-size: 0.78rem; font-weight: 700;
-            color: var(--primary-teal); text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.25s ease, color 0.25s ease;
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-top: 1rem; font-size: 0.8rem; font-weight: 800;
+            color: white; text-decoration: none;
+            background: var(--gradient-dark);
+            padding: 0.5rem 1rem; border-radius: 20px;
+            border: none;
+            box-shadow: 0 2px 10px rgba(15,39,68,0.2);
+            transition: all 0.25s ease;
         }
-        .timeline-chapter-link:hover { color: var(--accent-gold); border-bottom-color: var(--accent-gold); }
+        .timeline-chapter-link:hover { 
+            background: linear-gradient(135deg, #c9a84c 0%, #e8d5a3 100%);
+            color: #1a1a1a;
+            box-shadow: 0 4px 16px rgba(201,168,76,0.4);
+            transform: translateY(-1px);
+        }
         .timeline-content h4 { font-size: 1.1rem; color: var(--primary-navy); margin-bottom: 0.3rem; }
         .timeline-content .institution { color: var(--primary-teal); font-weight: 700; font-size: 0.88rem; margin-bottom: 0.6rem; }
         .timeline-content p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; font-weight: 400; }
@@ -346,29 +467,93 @@
             .chapters-grid-secondary { grid-template-columns: repeat(2, 1fr); }
             .chapters-grid-usa { grid-template-columns: 1fr; }
         }
+
         @media (max-width: 900px) {
             .chapters-grid-primary { grid-template-columns: 1fr; }
             .chapters-grid-secondary { grid-template-columns: repeat(2, 1fr); }
         }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            /* Nav: hide links, show hamburger */
+            .nav-links { display: none !important; }
+            .hamburger { display: flex; }
+
+            /* Hero */
+            .hero { padding: 7rem 5% 3rem; min-height: auto; }
             .hero-content { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
-            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-text .subtitle { font-size: 1rem; }
             .hero-text .tagline { border-left: none; border-top: 3px solid var(--accent-gold); padding-left: 0; padding-top: 1.2rem; text-align: center; }
-            .profile-container { width: 260px; height: 260px; }
-            .photo-gallery { grid-template-columns: 1fr; }
-            .timeline::before { left: 30px; }
-            .timeline-item, .timeline-item:nth-child(even) { justify-content: flex-start; padding-left: 80px; padding-right: 0; }
-            .timeline-date { left: 0 !important; right: auto !important; top: -45px; font-size: 0.75rem; }
-            .timeline-dot { left: 30px; }
-            .timeline-content { margin: 0; border-right: none !important; border-left: 4px solid var(--primary-navy) !important; }
-            .contact { padding: 2.5rem 1.5rem; }
+            .profile-container { width: 220px; height: 220px; margin: 0 auto; }
+            .hero-image { order: -1; }
             .hero-stats { justify-content: center; }
-            section { padding: 4rem 5%; }
-            .philosophy { padding: 2rem; }
-            .chapters-outer { padding: 3.5rem 5%; }
-            .chapters-grid-secondary { grid-template-columns: 1fr; }
+            .stat-item { min-width: 120px; }
+
+            /* Hero CTA box */
+            .hero-cta-box { text-align: left; }
+
+            /* Chapters grid → all single column on mobile */
+            .chapters-grid-primary,
+            .chapters-grid-secondary,
             .chapters-grid-usa { grid-template-columns: 1fr; }
+            .chapters-outer { padding: 3rem 4%; }
+            .chapter-card { padding: 1.4rem 1.2rem; }
+            .chapter-cta { font-size: 0.8rem; padding: 0.6rem 1.1rem; }
+
+            /* Sections */
+            section { padding: 3.5rem 5%; }
+            .philosophy { padding: 1.8rem; }
+            .philosophy-content { font-size: 1rem; }
+
+            /* Timeline: move to left-aligned single column */
+            .timeline::before { left: 20px; }
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 55px;
+                padding-right: 0;
+            }
+            .timeline-date {
+                position: static !important;
+                transform: none !important;
+                display: inline-block;
+                font-size: 0.72rem;
+                margin-bottom: 0.5rem;
+                left: auto !important; right: auto !important;
+            }
+            .timeline-dot { left: 20px; top: 32px; transform: translateX(-50%); }
+            .timeline-content {
+                margin: 0 !important;
+                border-right: none !important;
+                border-left: 4px solid var(--primary-navy) !important;
+                padding: 1.2rem;
+            }
+            .timeline-item:nth-child(even) .timeline-content {
+                border-left: 4px solid var(--primary-teal) !important;
+            }
+
+            /* Gallery */
+            .photo-gallery { grid-template-columns: 1fr; }
+
+            /* Contact */
+            .contact { padding: 2.5rem 1.5rem; }
+            .contact h2 { font-size: 1.6rem; }
+            .contact-grid { gap: 2rem; }
+
+            /* Footer */
+            .footer-nav { gap: 0.8rem; }
+            .footer-nav a { font-size: 0.78rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 { font-size: 1.9rem; }
+            .hero-stats { gap: 0.6rem; }
+            .stat-item { min-width: 100px; padding: 0.6rem 0.8rem; }
+            .stat-number { font-size: 1.1rem; }
+            .chapters-heading { font-size: 1.5rem; }
+            .section-header h2 { font-size: 1.7rem; }
+            .credential-item { padding: 1rem 1.1rem; gap: 0.8rem; }
+            .chapter-cta { font-size: 0.75rem; padding: 0.55rem 1rem; }
         }
     </style>
 </head>
@@ -385,7 +570,21 @@
             <li><a href="#contact">Contact</a></li>
             <li><a href="https://hamidfazal.github.io/new-dashboard/" class="nav-btn" target="_blank">Research Dashboard</a></li>
         </ul>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#chapters" onclick="closeMobileMenu()">Chapters</a>
+        <a href="#philosophy" onclick="closeMobileMenu()">Philosophy</a>
+        <a href="#specialties" onclick="closeMobileMenu()">Specialties</a>
+        <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+        <a href="#credentials" onclick="closeMobileMenu()">Credentials</a>
+        <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+        <a href="https://hamidfazal.github.io/new-dashboard/" class="mobile-btn" target="_blank">Research Dashboard ↗</a>
+    </div>
 
     <!-- HERO -->
     <section class="hero">
@@ -438,34 +637,32 @@
         <div class="chapters-inner">
             <p class="chapters-eyebrow">Portfolio</p>
             <h2 class="chapters-heading">A Career Told in <em>Chapters</em></h2>
-            <p class="chapters-sub">Each chapter is its own story — click to read it in full.</p>
+            <p class="chapters-sub">Each chapter is its own story — tap to read it in full.</p>
 
-            <!-- PRIMARY: 3 flagship chapters -->
             <div class="chapters-grid-primary">
                 <a href="https://hamidfazal.github.io/US/" class="chapter-card" target="_blank">
                     <span class="chapter-tag">USA · Research & Clinical Training</span>
                     <span class="chapter-title">An <em>American</em> Chapter</span>
                     <span class="chapter-meta">New York · West Virginia · Arkansas</span>
                     <p class="chapter-desc">Clinical training, FDA-regulated research, and the USMLE trilogy — an immersive cross-continental passage that shaped how I think as a physician.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
                 <a href="https://hamidfazal.github.io/SSWAB-Trust-Kidney-Care/" class="chapter-card" target="_blank">
                     <span class="chapter-tag">2021 – 2025 · Karachi</span>
                     <span class="chapter-title">Four Years at <em>SSWAB Kidney Care</em></span>
                     <span class="chapter-meta">Senior Medical Officer · OPD In-Charge</span>
                     <p class="chapter-desc">Building a nephrology OPD from the ground up under Professor Waqar Kazmi — where chronic disease management became a daily discipline and community trust was earned slowly.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
                 <a href="https://hamidfazal.github.io/community-outreach-/" class="chapter-card" target="_blank">
                     <span class="chapter-tag">2025 – Present · Karachi</span>
                     <span class="chapter-title">A Different Kind of <em>Journey</em></span>
                     <span class="chapter-meta">Field RMO · Karwan-e-Hayat Outreach</span>
                     <p class="chapter-desc">Leaving hospital comfort for mobile medical camps in Karachi's most underserved communities — field medicine, mental health outreach, and what it means to serve without safety nets.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
             </div>
 
-            <!-- SECONDARY: Karachi earlier chapters -->
             <p class="chapters-divider">· Earlier Chapters · Karachi ·</p>
             <div class="chapters-grid-secondary">
                 <a href="https://hamidfazal.github.io/IBS/" class="chapter-card compact" target="_blank">
@@ -473,39 +670,38 @@
                     <span class="chapter-title"><em>Institute of Behavioral Sciences</em></span>
                     <span class="chapter-meta">RMO · Dr. A.Q. Khan Center, DUHS</span>
                     <p class="chapter-desc">Five years inside one of Karachi's leading psychiatric institutions — building the foundation of my psychiatric clinical thinking.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
                 <a href="https://hamidfazal.github.io/BIDE/" class="chapter-card compact" target="_blank">
                     <span class="chapter-tag">2019 · Karachi</span>
                     <span class="chapter-title"><em>BIDE</em> — Diabetology & Endocrinology</span>
                     <span class="chapter-meta">Ward RMO · Baqai Institute</span>
                     <p class="chapter-desc">Focused inpatient exposure in one of Pakistan's premier specialist centres for diabetes and metabolic disease.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
                 <a href="https://hamidfazal.github.io/KEH/" class="chapter-card compact" target="_blank">
                     <span class="chapter-tag">2019 – 2020 · Karachi</span>
                     <span class="chapter-title"><em>Karwan-e-Hayat</em> — Evening RMO</span>
                     <span class="chapter-meta">Evening RMO · Institute of Psychiatry</span>
                     <p class="chapter-desc">An evening chapter inside one of Karachi's finest psychiatric institutions — running alongside ICU night duties in parallel.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
                 <a href="https://hamidfazal.github.io/icu/" class="chapter-card compact" target="_blank">
                     <span class="chapter-tag">2019 – 2021 · Karachi</span>
                     <span class="chapter-title">Two Years at the <em>Edge of Life</em></span>
                     <span class="chapter-meta">Night RMO · ICU — Jamal Noor Hospital</span>
                     <p class="chapter-desc">Two years of uninterrupted night ICU duty through Karachi's most demanding clinical era — and through a global pandemic.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
                 <a href="https://hamidfazal.github.io/GA/" class="chapter-card compact" target="_blank">
                     <span class="chapter-tag">Karachi · Internal Medicine</span>
                     <span class="chapter-title"><em>GA Asghar</em> — General Medicine</span>
                     <span class="chapter-meta">Medical Officer · GA Asghar Hospital</span>
                     <p class="chapter-desc">A chapter in general medicine under Professor Nadeem Iqbal — where broad clinical exposure and mentorship shaped a rigorous diagnostic foundation.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
             </div>
 
-            <!-- AMERICAN ARC: NYU + CAMC as separate dedicated chapters -->
             <p class="chapters-divider">· American Research Arc ·</p>
             <div class="chapters-grid-usa">
                 <a href="https://hamidfazal.github.io/NYU/" class="chapter-card compact usa-card" target="_blank">
@@ -513,14 +709,14 @@
                     <span class="chapter-title">NYU Medical Center — <em>Aging & Dementia Research</em></span>
                     <span class="chapter-meta">Clinical Research Fellow · Silberstein Alzheimer's Institute</span>
                     <p class="chapter-desc">One year at the frontier of neurocognitive science — working under Professor Barry Reisberg inside the Millhauser Laboratories, at the absolute edge of what medicine understood about the aging brain.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
                 <a href="https://hamidfazal.github.io/CAMC/" class="chapter-card compact usa-card" target="_blank">
                     <span class="chapter-tag">2002 – 2003 · Charleston, West Virginia</span>
                     <span class="chapter-title">CAMC — <em>FDA Drug Trials & Academic Medicine</em></span>
                     <span class="chapter-meta">Clinical Research Volunteer · WVU · Dr. Daniel Lucas</span>
                     <p class="chapter-desc">A year inside FDA-regulated pharmaceutical trials under Dr. B. Daniel Lucas Jr. — culminating in peer-reviewed publication in the American Journal of Cardiology.</p>
-                    <span class="chapter-cta">Read the chapter →</span>
+                    <span class="chapter-cta">Read the chapter <span class="cta-arrow">→</span></span>
                 </a>
             </div>
 
@@ -631,7 +827,7 @@
                     <h4>Field RMO – Psychiatric Outreach</h4>
                     <div class="institution">Karwan-e-Hayat / KCPC, Karachi</div>
                     <p>Directing mobile units addressing medical needs and mental health in underserved sectors at Creek General Hospital Korangi. Leading tri-weekly medical camp operations.</p>
-                    <a href="https://hamidfazal.github.io/community-outreach-/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
+                    <a href="https://hamidfazal.github.io/community-outreach-/" class="timeline-chapter-link" target="_blank">↗ Full Chapter</a>
                 </div>
             </div>
 
@@ -642,7 +838,7 @@
                     <h4>OPD In-Charge — Senior Medical Officer</h4>
                     <div class="institution">SSWAB Trust Kidney Care, Karachi</div>
                     <p>Served as <strong>OPD In-Charge</strong> for Diabetes Mellitus, Hypertension, and Chronic Kidney Disease — managing a large patient base under Professor Waqar Kazmi, and overseeing dialysis unit functions.</p>
-                    <a href="https://hamidfazal.github.io/SSWAB-Trust-Kidney-Care/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
+                    <a href="https://hamidfazal.github.io/SSWAB-Trust-Kidney-Care/" class="timeline-chapter-link" target="_blank">↗ Full Chapter</a>
                 </div>
             </div>
 
@@ -653,7 +849,7 @@
                     <h4>Night RMO — Intensive Care Unit</h4>
                     <div class="institution">Jamal Noor Hospital, Karachi</div>
                     <p>Two uninterrupted years of night ICU duty spanning the entire COVID-19 pandemic — managing ventilated patients, critical emergencies, and the full spectrum of intensive care through the night.</p>
-                    <a href="https://hamidfazal.github.io/icu/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
+                    <a href="https://hamidfazal.github.io/icu/" class="timeline-chapter-link" target="_blank">↗ Full Chapter</a>
                 </div>
             </div>
 
@@ -664,7 +860,7 @@
                     <h4>Evening RMO — Inpatient Psychiatry</h4>
                     <div class="institution">Karwan-e-Hayat Institute of Psychiatry, Karachi</div>
                     <p>Evening inpatient psychiatric responsibilities at one of Karachi's most respected psychiatric institutions — running in parallel with ICU night duties at Jamal Noor.</p>
-                    <a href="https://hamidfazal.github.io/KEH/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
+                    <a href="https://hamidfazal.github.io/KEH/" class="timeline-chapter-link" target="_blank">↗ Full Chapter</a>
                 </div>
             </div>
 
@@ -675,7 +871,7 @@
                     <h4>Ward RMO — Diabetology & Endocrinology</h4>
                     <div class="institution">Baqai Institute of Diabetology & Endocrinology (BIDE)</div>
                     <p>Inpatient clinical management of complex diabetes and endocrine presentations in one of Pakistan's premier specialist centres — including exposure to the dedicated Diabetic Foot Clinic.</p>
-                    <a href="https://hamidfazal.github.io/BIDE/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
+                    <a href="https://hamidfazal.github.io/BIDE/" class="timeline-chapter-link" target="_blank">↗ Full Chapter</a>
                 </div>
             </div>
 
@@ -686,7 +882,7 @@
                     <h4>RMO — Institute of Behavioral Sciences</h4>
                     <div class="institution">Dr. A.Q. Khan Center, DUHS, Karachi</div>
                     <p>Five years of institutional psychiatric care — delivering targeted mental health management while tracking long-term metabolic data profiles of patients on atypical antipsychotics.</p>
-                    <a href="https://hamidfazal.github.io/IBS/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
+                    <a href="https://hamidfazal.github.io/IBS/" class="timeline-chapter-link" target="_blank">↗ Full Chapter</a>
                 </div>
             </div>
 
@@ -717,7 +913,7 @@
                     <h4>Medical Officer — General Medicine</h4>
                     <div class="institution">GA Asghar Hospital, Karachi</div>
                     <p>Clinical posting in general medicine under Professor Nadeem Iqbal — broad inpatient exposure that deepened diagnostic reasoning and reinforced core internal medicine competencies.</p>
-                    <a href="https://hamidfazal.github.io/GA/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
+                    <a href="https://hamidfazal.github.io/GA/" class="timeline-chapter-link" target="_blank">↗ Full Chapter</a>
                 </div>
             </div>
 
@@ -728,7 +924,7 @@
                     <h4>Clinical Research Fellow — Aging & Dementia</h4>
                     <div class="institution">NYU Medical Center · Silberstein Alzheimer's Institute</div>
                     <p>Conducted Alzheimer's clinical investigations under Professor Barry Reisberg inside the Millhauser Laboratories — one year at the absolute frontier of global neurocognitive research.</p>
-                    <a href="https://hamidfazal.github.io/NYU/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
+                    <a href="https://hamidfazal.github.io/NYU/" class="timeline-chapter-link" target="_blank">↗ Full Chapter</a>
                 </div>
             </div>
 
@@ -739,7 +935,7 @@
                     <h4>Clinical Research Fellow — FDA Drug Trials</h4>
                     <div class="institution">CAMC / WVU · Charleston, West Virginia</div>
                     <p>FDA-regulated pharmaceutical drug trials under Dr. B. Daniel Lucas Jr. — contributing to clinical research that resulted in peer-reviewed publication in the American Journal of Cardiology.</p>
-                    <a href="https://hamidfazal.github.io/CAMC/" class="timeline-chapter-link" target="_blank">↗ Read the full chapter</a>
+                    <a href="https://hamidfazal.github.io/CAMC/" class="timeline-chapter-link" target="_blank">↗ Full Chapter</a>
                 </div>
             </div>
 
@@ -889,67 +1085,7 @@
         <div class="contact fade-in">
             <h2>Contact & Collaboration</h2>
             <p>Available for senior clinical management openings, research collaboration, and medical training development projects.</p>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="contact-icon">✉️</div>
-                    <span>Email Address</span>
-                    <a href="mailto:1hamidfazal@gmail.com">1hamidfazal@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <span>Clinical Location</span>
-                    <span class="address-text">Aftab Clinic, Shop 13, Bakhshi Square, near Arshi Shopping Mall, F.B. Area, Karachi</span>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="contact-grid
+...
 
-    <footer>
-        <nav class="footer-nav">
-            <a href="https://hamidfazal.github.io/US/" target="_blank">American Chapter</a>
-            <a href="https://hamidfazal.github.io/NYU/" target="_blank">NYU — Dementia Research</a>
-            <a href="https://hamidfazal.github.io/CAMC/" target="_blank">CAMC — FDA Trials</a>
-            <a href="https://hamidfazal.github.io/SSWAB-Trust-Kidney-Care/" target="_blank">SSWAB Kidney Care</a>
-            <a href="https://hamidfazal.github.io/community-outreach-/" target="_blank">Community Outreach</a>
-            <a href="https://hamidfazal.github.io/IBS/" target="_blank">IBS Chapter</a>
-            <a href="https://hamidfazal.github.io/BIDE/" target="_blank">BIDE</a>
-            <a href="https://hamidfazal.github.io/KEH/" target="_blank">Karwan-e-Hayat</a>
-            <a href="https://hamidfazal.github.io/icu/" target="_blank">ICU — Jamal Noor</a>
-            <a href="https://hamidfazal.github.io/GA/" target="_blank">GA Asghar</a>
-            <a href="https://hamidfazal.github.io/new-dashboard/" target="_blank">Research Dashboard</a>
-        </nav>
-        <div class="certificates-banner">
-            <span class="cert-badge">MBBS · ECFMG Certified</span>
-            <span class="cert-badge">FCPS-II Training (Internal Medicine)</span>
-            <span class="cert-badge">Diabetes Ward Management (BIDE)</span>
-            <span class="cert-badge">PMDC Registered Medicine Fellow</span>
-            <span class="cert-badge">Clinical Research Fellow</span>
-            <span class="cert-badge">US Post-Graduate Research Scholar</span>
-            <span class="cert-badge">ACLS Certified Clinician</span>
-        </div>
-        <p>&copy; 2026 Dr. Hamid Fazal. All rights reserved. · <a href="https://hamidfazal.github.io" style="color: var(--primary-teal); text-decoration: none;">hamidfazal.github.io</a></p>
-    </footer>
-
-    <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-    </script>
-
-</body>
-</html>
-
+[Message clipped]  View entire message
