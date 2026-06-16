@@ -1086,6 +1086,127 @@
         </div>
     </section>
 
-...
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact fade-in">
+            <h2>Contact & Collaboration</h2>
+            <p>Available for senior clinical management openings, research collaboration, and medical training development projects.</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <span>Email Address</span>
+                    <a href="mailto:1hamidfazal@gmail.com">1hamidfazal@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <span>Clinical Location</span>
+                    <span class="address-text">Aftab Clinic, Shop 13, Bakhshi Square, near Arshi Shopping Mall, F.B. Area, Karachi</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-[Message clipped]  View entire message
+    <footer>
+        <nav class="footer-nav">
+            <a href="https://hamidfazal.github.io/US/" target="_blank">American Chapter</a>
+            <a href="https://hamidfazal.github.io/NYU/" target="_blank">NYU — Dementia Research</a>
+            <a href="https://hamidfazal.github.io/CAMC/" target="_blank">CAMC — FDA Trials</a>
+            <a href="https://hamidfazal.github.io/SSWAB-Trust-Kidney-Care/" target="_blank">SSWAB Kidney Care</a>
+            <a href="https://hamidfazal.github.io/community-outreach-/" target="_blank">Community Outreach</a>
+            <a href="https://hamidfazal.github.io/IBS/" target="_blank">IBS Chapter</a>
+            <a href="https://hamidfazal.github.io/BIDE/" target="_blank">BIDE</a>
+            <a href="https://hamidfazal.github.io/KEH/" target="_blank">Karwan-e-Hayat</a>
+            <a href="https://hamidfazal.github.io/icu/" target="_blank">ICU — Jamal Noor</a>
+            <a href="https://hamidfazal.github.io/GA/" target="_blank">GA Asghar</a>
+            <a href="https://hamidfazal.github.io/new-dashboard/" target="_blank">Research Dashboard</a>
+        </nav>
+        <div class="certificates-banner">
+            <span class="cert-badge">MBBS · ECFMG Certified</span>
+            <span class="cert-badge">FCPS-II Training (Internal Medicine)</span>
+            <span class="cert-badge">Diabetes Ward Management (BIDE)</span>
+            <span class="cert-badge">PMDC Registered Medicine Fellow</span>
+            <span class="cert-badge">Clinical Research Fellow</span>
+            <span class="cert-badge">US Post-Graduate Research Scholar</span>
+            <span class="cert-badge">ACLS Certified Clinician</span>
+        </div>
+        <p>&copy; 2026 Dr. Hamid Fazal. All rights reserved. · <a href="https://hamidfazal.github.io" style="color: var(--primary-teal); text-decoration: none;">hamidfazal.github.io</a></p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        try {
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+        } catch (err) { console.error('navbar scroll error:', err); }
+
+        // Hamburger menu
+        try {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const navbarEl = document.getElementById('navbar');
+
+            hamburger.addEventListener('click', () => {
+                const isOpen = hamburger.classList.toggle('open');
+                mobileMenu.classList.toggle('open', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            window.closeMobileMenu = function() {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            };
+
+            document.addEventListener('click', (e) => {
+                if (mobileMenu.classList.contains('open') &&
+                    !navbarEl.contains(e.target) &&
+                    !mobileMenu.contains(e.target)) {
+                    window.closeMobileMenu();
+                }
+            });
+        } catch (err) { console.error('hamburger menu error:', err); }
+
+        // Fade-in reveal animation (progressive enhancement only —
+        // content is already visible via CSS, this just adds a nice entrance)
+        try {
+            const fadeEls = document.querySelectorAll('.fade-in');
+            fadeEls.forEach(el => el.classList.add('js-ready'));
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            fadeEls.forEach(el => observer.observe(el));
+        } catch (err) { console.error('fade-in observer error:', err); }
+
+        // Smooth scroll for anchor links (close mobile menu first, then scroll
+        // on next frame so the menu's layout change doesn't fight the scroll)
+        try {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (!targetId || targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    const wasMenuOpen = mobileMenu && mobileMenu.classList.contains('open');
+
+                    if (wasMenuOpen && window.closeMobileMenu) window.closeMobileMenu();
+
+                    if (target) {
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            });
+                        });
+                    }
+                });
+            });
+        } catch (err) { console.error('anchor scroll error:', err); }
+    </script>
+
+</body>
+</html>
+
