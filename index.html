@@ -123,14 +123,17 @@
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-light);
             box-shadow: 0 8px 30px rgba(15,39,68,0.12);
-            z-index: 999;
+            z-index: 1001;
             padding: 1.5rem 5% 2rem;
             flex-direction: column;
             gap: 0;
             transform: translateY(-20px);
             opacity: 0;
             transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            max-height: calc(100vh - 72px);
+            overflow-y: auto;
         }
+        nav.scrolled ~ .mobile-menu { top: 64px; }
         .mobile-menu.open {
             display: flex;
             transform: translateY(0);
@@ -1084,8 +1087,7 @@
     <section id="contact">
         <div class="contact fade-in">
             <h2>Contact & Collaboration</h2>
-            <p>Available for senior clinical management openings, research collaboration, and medical training development projects.</p>
-            <div class="contact-grid
+            <p>Avail
 ...
 
 [Message clipped]  View entire message
